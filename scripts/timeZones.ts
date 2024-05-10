@@ -1,10 +1,14 @@
-interface TimeZone {
-    [key: string]: string;
+export interface TimeZone {
+    placeName: string;
+    code: string;
 }
 
-export const TIME_ZONES: TimeZone = {
-    "New York": "America/New_York",
-    "Paris": "Europe/Paris",
-}
+export const TIME_ZONES: TimeZone[] = [
+    { placeName:"New York", code:"America/New_York" },
+    { placeName:"Paris", code:"Europe/Paris" },
+];
 
-// export const randomTimeZone: TimeZone =
+export function randomTimeZone(): TimeZone {
+    const randomIndex = Math.floor(Math.random() * Object.keys(TIME_ZONES).length);
+    return TIME_ZONES[randomIndex];
+}
