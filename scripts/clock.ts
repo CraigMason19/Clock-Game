@@ -3,30 +3,34 @@ const MINUTES_INTERVAL = 360 / 60;
 const HOURS_INTERVAL = 360 / 12;
 
 export class Clock {
+    name: string;
     timeZone: string;
+
+    element: HTMLDivElement;
 
     secondHand: HTMLDivElement;
     minuteHand: HTMLDivElement;
     hourHand: HTMLDivElement;
 
     constructor(name: string, timeZone: string = 'UTC') {
+        this.name = name;
         this.timeZone = timeZone;
 
-        const clockDiv = document.getElementById(name) as HTMLDivElement;
+        this.element = document.getElementById(name) as HTMLDivElement;
 
         // ! -> This means I know it exists and will not be null
-        this.secondHand = clockDiv.querySelector('[name="second-hand"]')!; 
-        this.minuteHand = clockDiv.querySelector('[name="minute-hand"]')!;
-        this.hourHand = clockDiv.querySelector('[name="hour-hand"]')!;
+        this.secondHand = this.element.querySelector('[name="second-hand"]')!; 
+        this.minuteHand = this.element.querySelector('[name="minute-hand"]')!;
+        this.hourHand = this.element.querySelector('[name="hour-hand"]')!;
     }
 
-    getCurrentTime(): Date {
+    currentTime(): Date {
         const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.timeZone });
         return new Date(currentTimeString);
     }
  
-    animateClock = (): void => {
-        const time = this.getCurrentTime();
+    animate = (): void => {
+        const time = this.currentTime();
 
         const seconds = time.getSeconds();
         const minutes = time.getMinutes();
@@ -40,6 +44,6 @@ export class Clock {
         this.minuteHand.style.transform = `rotate(${minuteRotation}deg)`;
         this.hourHand.style.transform = `rotate(${hourRotation}deg)`;  
     
-        requestAnimationFrame(this.animateClock);
+        requestAnimationFrame(this.animate);
     };
 }
