@@ -59,7 +59,6 @@ body {
     display: flex;
     place-items: center;  
     grid-gap: 50px;
-
 }
 
 .clock {
