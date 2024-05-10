@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+
 :root {
     --color-background: rgb(43,43,43);
     --color-rim: cornflowerblue;
@@ -5,7 +7,7 @@
     --color-minute: #297e22;
     --color-hour: brown;
 
-    --size-clock: 400px;
+    --size-clock: 350px;
 
     --size-second-center: 4%; 
     --size-minute-center: 8%; 
@@ -25,19 +27,48 @@
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    place-items: center;
+    grid-template-rows: 50% 10% 10% auto;
+
     height: 100vh;
     background-color: var(--color-background);
+    font-family: 'Oswald', sans-serif;
+    overflow:hidden;
+}
+
+.question {
+    color: aliceblue;
+    font-size: 2rem;
+}
+
+.answer-correct {
+    color: greenyellow;
+    font-size: 3rem;
+}
+
+.answer-incorrect {
+    color: brown;
+    font-size: 3rem;
+}
+/* .question, .answer {
+    font-size: 2rem;
+} */
+
+.clocks {
+    display: flex;
+    place-items: center;  
+    grid-gap: 50px;
+
 }
 
 .clock {
-    position: absolute;
+    position: relative;
+
     height: var(--size-clock);
     width: var(--size-clock);
     border-radius: 50%;
-    border: solid 5px;
+    border: solid 6px;
     border-color: var(--color-rim);
 }
 
