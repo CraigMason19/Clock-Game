@@ -28,4 +28,7 @@ export class Clock {
         const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.timeZone });
         return new Date(currentTimeString);
     }
+    toString() {
+        return new Date().toLocaleTimeString('en-US', { timeZone: this.timeZone });
+    }
 }

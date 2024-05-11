@@ -1,8 +1,10 @@
 import { Clock } from './clock.js';
 import { randomTimeZone } from './timeZones.js';
 
+// Text
 const questionText = document.getElementById("question") as HTMLParagraphElement;
-const answerText = document.getElementById("answer") as HTMLParagraphElement;
+const answerText = document.getElementById("result-text") as HTMLParagraphElement;
+const extraInfoText = document.getElementById("extra-info-text") as HTMLParagraphElement;
 
 // Buttons
 const playAgainButton = document.getElementById("play-again-button") as HTMLButtonElement;
@@ -13,9 +15,9 @@ let isCorrect = true;
 
 
 
-questionText.innerHTML = `Which clock shows the time in ${answer.placeName}`;
+questionText.innerHTML = `Which clock shows the time in ${answer.placeName}?`;
 answerText.style.display = 'none';
-
+extraInfoText.style.display = 'none';
 playAgainButton.style.display = 'none';
 
 const clockOne = new Clock("clock-one");
@@ -42,7 +44,9 @@ clocks.forEach(clock => {
     clock.element.addEventListener('click', () => {
         if(isCorrect) {
             answerText.innerHTML = "Correct!!!";
-            answerText.classList.add("answer-correct");  
+            answerText.classList.add("answer-correct");
+            extraInfoText.innerHTML = `The time in ${answer.placeName} is ${clockOne.toString()}`;
+            
         }
         else {
             answerText.innerHTML = "Incorrect sorry";
@@ -50,12 +54,14 @@ clocks.forEach(clock => {
         }
     
         answerText.style.display = "block";
+        extraInfoText.style.display = "block";
         playAgainButton.style.display = "block";
     });
 });
 
 playAgainButton.addEventListener("click", () => {
     answerText.style.display = "none";
+    extraInfoText.style.display = "none";
     playAgainButton.style.display = "none";
 });
 

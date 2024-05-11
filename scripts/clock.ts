@@ -28,6 +28,10 @@ export class Clock {
         const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.timeZone });
         return new Date(currentTimeString);
     }
+
+    toString(): string {
+        return new Date().toLocaleTimeString('en-US', { timeZone: this.timeZone });
+    }
  
     animate = (): void => {
         const time = this.currentTime();
