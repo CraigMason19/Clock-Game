@@ -26,6 +26,7 @@ clocks.forEach(clock => {
     });
     clock.element.addEventListener('click', () => {
         if (isCorrect) {
+            questionText.style.display = "none";
             answerText.innerHTML = "Correct!!!";
             answerText.classList.add("answer-correct");
             extraInfoText.innerHTML = `The time in ${answer.placeName} is ${clockOne.toString()}`;
@@ -43,4 +44,5 @@ playAgainButton.addEventListener("click", () => {
     answerText.style.display = "none";
     extraInfoText.style.display = "none";
     playAgainButton.style.display = "none";
+    questionText.style.display = "block";
 });
