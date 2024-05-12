@@ -2,20 +2,13 @@ const SECONDS_INTERVAL = 360 / 60;
 const MINUTES_INTERVAL = 360 / 60;
 const HOURS_INTERVAL = 360 / 12;
 export class Clock {
+    name;
+    timeZone;
+    element;
+    secondHand;
+    minuteHand;
+    hourHand;
     constructor(name, timeZone = 'UTC') {
-        this.animate = () => {
-            const time = this.currentTime();
-            const seconds = time.getSeconds();
-            const minutes = time.getMinutes();
-            const hours = time.getHours();
-            const secondRotation = SECONDS_INTERVAL * seconds;
-            const minuteRotation = MINUTES_INTERVAL * minutes + (seconds / 10);
-            const hourRotation = HOURS_INTERVAL * hours + (MINUTES_INTERVAL / 12) * minutes;
-            this.secondHand.style.transform = `rotate(${secondRotation}deg)`;
-            this.minuteHand.style.transform = `rotate(${minuteRotation}deg)`;
-            this.hourHand.style.transform = `rotate(${hourRotation}deg)`;
-            requestAnimationFrame(this.animate);
-        };
         this.name = name;
         this.timeZone = timeZone;
         this.element = document.getElementById(name);
@@ -25,10 +18,27 @@ export class Clock {
         this.hourHand = this.element.querySelector('[name="hour-hand"]');
     }
     currentTime() {
-        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.timeZone });
+        const currentTimeString = new Date().toLocaleString('en-GB', { timeZone: this.timeZone });
         return new Date(currentTimeString);
     }
-    toString() {
-        return new Date().toLocaleTimeString('en-US', { timeZone: this.timeZone });
+    utcOffset() {
+        let x = this.currentTime().getTimezoneOffset() / 60;
+        return x;
     }
+    toString() {
+        return new Date().toLocaleTimeString('en-GB', { timeZone: this.timeZone });
+    }
+    animate = () => {
+        const time = this.currentTime();
+        const seconds = time.getSeconds();
+        const minutes = time.getMinutes();
+        const hours = time.getHours();
+        const secondRotation = SECONDS_INTERVAL * seconds;
+        const minuteRotation = MINUTES_INTERVAL * minutes + (seconds / 10);
+        const hourRotation = HOURS_INTERVAL * hours + (MINUTES_INTERVAL / 12) * minutes;
+        this.secondHand.style.transform = `rotate(${secondRotation}deg)`;
+        this.minuteHand.style.transform = `rotate(${minuteRotation}deg)`;
+        this.hourHand.style.transform = `rotate(${hourRotation}deg)`;
+        requestAnimationFrame(this.animate);
+    };
 }

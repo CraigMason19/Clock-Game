@@ -11,27 +11,24 @@ const playAgainButton = document.getElementById("play-again-button") as HTMLButt
 
 
 let answer = randomTimeZone();
-let isCorrect = true;
+
+let isCorrect = true; 
 
 
 
 
-questionText.innerHTML = `Which clock shows the time in ${answer.placeName}?`;
+questionText.innerHTML = `Which clock shows the time in ${answer.name}?`;
 answerText.style.display = 'none';
 extraInfoText.style.display = 'none';
 playAgainButton.style.display = 'none';
 
 const clockOne = new Clock("clock-one");
-const clockTwo = new Clock("clock-two", answer.code);
+const clockTwo = new Clock("clock-two", answer.timeZone);
 const clockThree = new Clock("clock-three", 'Europe/Paris');
 
 let clocks = [clockOne, clockTwo, clockThree];
 
 clocks.forEach(clock => clock.animate());
-
-
-
-
 
 clocks.forEach(clock => {
     clock.element.addEventListener('mouseover', () => {
@@ -47,7 +44,7 @@ clocks.forEach(clock => {
             questionText.style.display = "none";
             answerText.innerHTML = "Correct!!!";
             answerText.classList.add("answer-correct");
-            extraInfoText.innerHTML = `The time in ${answer.placeName} is ${clockOne.toString()}`;
+            extraInfoText.innerHTML = `The time in ${answer.name} is ${clockTwo.toString()} ${answer.timeZoneName} - ${answer.offset}`;
             
         }
         else {

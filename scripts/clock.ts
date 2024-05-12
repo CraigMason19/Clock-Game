@@ -25,12 +25,17 @@ export class Clock {
     }
 
     currentTime(): Date {
-        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.timeZone });
+        const currentTimeString = new Date().toLocaleString('en-GB', { timeZone: this.timeZone });
         return new Date(currentTimeString);
     }
 
+    utcOffset(): number {
+        let x = this.currentTime().getTimezoneOffset() / 60;
+        return x;
+    }
+
     toString(): string {
-        return new Date().toLocaleTimeString('en-US', { timeZone: this.timeZone });
+        return new Date().toLocaleTimeString('en-GB', { timeZone: this.timeZone });
     }
  
     animate = (): void => {
