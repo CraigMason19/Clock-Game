@@ -13,14 +13,19 @@ const playAgainButton = document.getElementById("play-again-button") as HTMLButt
 
 const rootStyles = getComputedStyle(document.documentElement);
 
-let answer = randomTimeZone();
-let isCorrect = true;
-
+// Clocks
 let clockOne: Clock;
 let clockTwo: Clock;
 let clockThree: Clock;
 
 let clocks: Clock[] = [];
+
+// Game logic
+let MAX_GUESSES = 3;
+
+let answer = randomTimeZone();
+let isCorrect = true;
+let guesses = 0;
 
 // Game loop functions
 
@@ -74,22 +79,25 @@ function handleClick(this: HTMLElement): void {
         answerText.innerHTML = "Correct!!!";
         answerText.classList.add("answer-correct");
         extraInfoText.innerHTML = `The time in ${answer.placeName} is ${clock.toString()}`;
-    } else {
+    } 
+    else if (guesses < 2) {
         answerText.innerHTML = "Incorrect sorry";
         answerText.classList.add("answer-incorrect");
     }
 
+    guesses++;
     clock.disable();
     this.style.backgroundColor = '';
-
-    answerText.style.display = "block";
-    extraInfoText.style.display = "block";
-    playAgainButton.style.display = "block";
 
     // Clean up event listeners
     this.removeEventListener('click', handleClick);
     this.removeEventListener('mouseover', handleMouseOver);
     this.removeEventListener('mouseout', handleMouseOut);
+
+    answerText.style.display = "block";
+    extraInfoText.style.display = "block";
+    playAgainButton.style.display = "block";
+
 }
 
 // First cycle
