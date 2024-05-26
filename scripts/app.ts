@@ -40,6 +40,11 @@ function initializeGameClocks(): void {
     clockThree = new Clock("clock-three", 'Europe/Paris');
 
     clocks = [clockOne, clockTwo, clockThree];
+    console.log(clocks);
+
+    clocks.forEach(clock => clock.animate()); 
+
+
 }
 
 // First cycle
@@ -47,7 +52,10 @@ initializeGameHTML();
 initializeGameClocks();
 
 
-clocks.forEach(clock => clock.animate()); // always called
+ 
+ 
+
+
 
 
 clocks.forEach(clock => {
@@ -72,6 +80,20 @@ clocks.forEach(clock => {
             answerText.classList.add("answer-incorrect");   
         }
     
+
+        clock.disable();
+ 
+
+
+        clock.element.removeEventListener("click", () => {});
+        clock.element.removeEventListener("mouseover", () => {});
+        clock.element.removeEventListener("mouseout", () => {});
+
+        console.log(clock);
+
+
+
+
         answerText.style.display = "block";
         extraInfoText.style.display = "block";
         playAgainButton.style.display = "block";

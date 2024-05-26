@@ -1,5 +1,6 @@
 import { Clock } from './clock.js';
 import { randomTimeZone } from './timeZones.js';
+// Grab HTML References
 // Text
 const questionText = document.getElementById("question");
 const answerText = document.getElementById("result-text");
@@ -8,15 +9,29 @@ const extraInfoText = document.getElementById("extra-info-text");
 const playAgainButton = document.getElementById("play-again-button");
 let answer = randomTimeZone();
 let isCorrect = true;
-questionText.innerHTML = `Which clock shows the time in ${answer.placeName}?`;
-answerText.style.display = 'none';
-extraInfoText.style.display = 'none';
-playAgainButton.style.display = 'none';
-const clockOne = new Clock("clock-one");
-const clockTwo = new Clock("clock-two", answer.code);
-const clockThree = new Clock("clock-three", 'Europe/Paris');
-let clocks = [clockOne, clockTwo, clockThree];
-clocks.forEach(clock => clock.animate());
+let clockOne;
+let clockTwo;
+let clockThree;
+let clocks = [];
+// Game loop functions
+function initializeGameHTML() {
+    questionText.innerHTML = `Which clock shows the time in ${answer.placeName}?`;
+    questionText.style.display = "block";
+    answerText.style.display = 'none';
+    extraInfoText.style.display = 'none';
+    playAgainButton.style.display = 'none';
+}
+function initializeGameClocks() {
+    clockOne = new Clock("clock-one");
+    clockTwo = new Clock("clock-two", answer.code);
+    clockThree = new Clock("clock-three", 'Europe/Paris');
+    clocks = [clockOne, clockTwo, clockThree];
+    console.log(clocks);
+    clocks.forEach(clock => clock.animate());
+}
+// First cycle
+initializeGameHTML();
+initializeGameClocks();
 clocks.forEach(clock => {
     clock.element.addEventListener('mouseover', () => {
         clock.element.style.backgroundColor = 'lightblue';
@@ -35,14 +50,17 @@ clocks.forEach(clock => {
             answerText.innerHTML = "Incorrect sorry";
             answerText.classList.add("answer-incorrect");
         }
+        clock.disable();
+        clock.element.removeEventListener("click", () => { });
+        clock.element.removeEventListener("mouseover", () => { });
+        clock.element.removeEventListener("mouseout", () => { });
+        console.log(clock);
         answerText.style.display = "block";
         extraInfoText.style.display = "block";
         playAgainButton.style.display = "block";
     });
 });
 playAgainButton.addEventListener("click", () => {
-    answerText.style.display = "none";
-    extraInfoText.style.display = "none";
-    playAgainButton.style.display = "none";
-    questionText.style.display = "block";
+    initializeGameHTML();
+    initializeGameClocks();
 });
