@@ -30,7 +30,7 @@ let guesses = 0;
 // Game loop functions
 
 function initializeGameHTML(): void {
-    questionText.innerHTML = `Which clock shows the time in ${answer.placeName}?`;
+    questionText.innerHTML = `Which clock shows the time in ${answer.name}?`;
     questionText.style.display = "block";
 
     answerText.style.display = 'none';
@@ -41,29 +41,25 @@ function initializeGameHTML(): void {
 function initializeGameClocks(): void {
     // Clean up previous clocks if they exist
     clocks.forEach(clock => clock.disable());
-    clocks = [];
 
     clockOne = new Clock("clock-one");
-    clockTwo = new Clock("clock-two", answer.code);
-    clockThree = new Clock("clock-three", 'Europe/Paris');
+    clockTwo = new Clock("clock-two", answer.timeZone);
+    clockThree = new Clock("clock-three", randomTimeZone().timeZone);
 
     clocks = [clockOne, clockTwo, clockThree];
-    console.log(clocks);
 
-    clocks.forEach(clock => clock.animate());
-
-    // Attach event listeners for clocks
     clocks.forEach(clock => {
+        clock.animate()
+
+        // Attach event listeners for clocks
         clock.element.addEventListener('mouseover', handleMouseOver);
         clock.element.addEventListener('mouseout', handleMouseOut);
         clock.element.addEventListener('click', handleClick);
-    });
+    }); 
 }
 
 function handleMouseOver(this: HTMLElement): void {
-    const color = rootStyles.getPropertyValue('--hover-color').trim();
- 
-    this.style.backgroundColor = rootStyles.getPropertyValue('--hover-color').trim();
+    this.style.backgroundColor = rootStyles.getPropertyValue('--hover-color');
 }
 
 function handleMouseOut(this: HTMLElement): void {
@@ -78,7 +74,7 @@ function handleClick(this: HTMLElement): void {
         questionText.style.display = "none";
         answerText.innerHTML = "Correct!!!";
         answerText.classList.add("answer-correct");
-        extraInfoText.innerHTML = `The time in ${answer.placeName} is ${clock.toString()}`;
+        extraInfoText.innerHTML = `The time in ${answer.timeZone} is ${clock.toString()} ${answer.offset}`;
     } 
     else if (guesses < 2) {
         answerText.innerHTML = "Incorrect sorry";
