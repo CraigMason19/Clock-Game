@@ -96,6 +96,14 @@ body {
     align-items: center;  
 }
 
+#debug-str {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+
 .clock {
     position: relative;
 

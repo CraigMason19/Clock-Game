@@ -1,10 +1,12 @@
+import { Place } from './timeZones.js';
+
 const SECONDS_INTERVAL = 360 / 60;
 const MINUTES_INTERVAL = 360 / 60;
 const HOURS_INTERVAL = 360 / 12;
 
 export class Clock {
     name: string;
-    timeZone: string;
+    place: Place;
     enabled: boolean = true;
 
     element: HTMLDivElement;
@@ -18,9 +20,12 @@ export class Clock {
     hourHand: HTMLDivElement;
     hourCenter: HTMLDivElement;
 
-    constructor(name: string, timeZone: string = 'UTC') {
+    debugString: HTMLParagraphElement;
+
+
+    constructor(name: string, place: Place) {
         this.name = name;
-        this.timeZone = timeZone;
+        this.place = place;
 
         this.element = document.getElementById(name) as HTMLDivElement;
 
@@ -34,16 +39,21 @@ export class Clock {
         this.hourHand = this.element.querySelector('[name="hour-hand"]')!;
         this.hourCenter = this.element.querySelector('[id="hour-center"]')!;
 
+        this.debugString = this.element.querySelector('[name="debug-str"]')!;
+
+        this.debugString.innerText = this.place.timeZone + this.place.timeZoneName;
+        console.log(this.debugString);
+
         this.enable();
     }
 
     currentTime(): Date {
-        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.timeZone });
+        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.place.timeZone });
         return new Date(currentTimeString);
     }
 
     toString(): string {
-        return new Date().toLocaleTimeString('en-US', { timeZone: this.timeZone });
+        return new Date().toLocaleTimeString('en-US', { timeZone: this.place.timeZone });
     }
 
     isEnabled(): boolean { return this.enabled; }

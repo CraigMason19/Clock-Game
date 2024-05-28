@@ -42,9 +42,9 @@ function initializeGameClocks(): void {
     // Clean up previous clocks if they exist
     clocks.forEach(clock => clock.disable());
 
-    clockOne = new Clock("clock-one");
-    clockTwo = new Clock("clock-two", answer.timeZone);
-    clockThree = new Clock("clock-three", randomTimeZone().timeZone);
+    clockOne = new Clock("clock-one", randomTimeZone());
+    clockTwo = new Clock("clock-two", answer);
+    clockThree = new Clock("clock-three", randomTimeZone());
 
     clocks = [clockOne, clockTwo, clockThree];
 

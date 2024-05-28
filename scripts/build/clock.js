@@ -2,7 +2,7 @@ const SECONDS_INTERVAL = 360 / 60;
 const MINUTES_INTERVAL = 360 / 60;
 const HOURS_INTERVAL = 360 / 12;
 export class Clock {
-    constructor(name, timeZone = 'UTC') {
+    constructor(name, place) {
         this.enabled = true;
         this.animate = () => {
             if (this.enabled) {
@@ -40,7 +40,7 @@ export class Clock {
             this.hourCenter.classList.add("hour-hand-disabled");
         };
         this.name = name;
-        this.timeZone = timeZone;
+        this.place = place;
         this.element = document.getElementById(name);
         // ! -> This means I know it exists and will not be null
         this.secondHand = this.element.querySelector('[name="second-hand"]');
@@ -49,14 +49,17 @@ export class Clock {
         this.minuteCenter = this.element.querySelector('[id="minute-center"]');
         this.hourHand = this.element.querySelector('[name="hour-hand"]');
         this.hourCenter = this.element.querySelector('[id="hour-center"]');
+        this.debugString = this.element.querySelector('[name="debug-str"]');
+        this.debugString.innerText = this.place.timeZone + this.place.timeZoneName;
+        console.log(this.debugString);
         this.enable();
     }
     currentTime() {
-        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.timeZone });
+        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.place.timeZone });
         return new Date(currentTimeString);
     }
     toString() {
-        return new Date().toLocaleTimeString('en-US', { timeZone: this.timeZone });
+        return new Date().toLocaleTimeString('en-US', { timeZone: this.place.timeZone });
     }
     isEnabled() { return this.enabled; }
 }
