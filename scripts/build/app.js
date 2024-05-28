@@ -1,5 +1,8 @@
 import { Clock } from './clock.js';
 import { getUniquePlaces } from './timeZones.js';
+function getRandomNumberInRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 // Grab HTML References
 // Text
 const questionText = document.getElementById("question");
@@ -11,7 +14,7 @@ const rootStyles = getComputedStyle(document.documentElement);
 let clocks = [];
 // Game logic
 let MAX_GUESSES = 3;
-let answer = 1;
+let answer = 0;
 let isCorrect = true;
 let guesses = 0;
 // Game loop functions
@@ -31,6 +34,7 @@ function initializeGameClocks() {
         clock.element.addEventListener('mouseout', handleMouseOut);
         clock.element.addEventListener('click', handleClick);
     });
+    answer = getRandomNumberInRange(0, 2);
 }
 function initializeGameHTML() {
     questionText.innerHTML = `Which clock shows the time in ${clocks[answer].place.name}?`;
@@ -74,7 +78,6 @@ function handleClick() {
 initializeGameClocks();
 initializeGameHTML();
 playAgainButton.addEventListener("click", () => {
-    answer = 1;
     initializeGameClocks();
     initializeGameHTML();
 });

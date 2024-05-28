@@ -1,6 +1,10 @@
 import { Clock } from './clock.js';
 import { getUniquePlaces, Place } from './timeZones.js';
 
+function getRandomNumberInRange(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 // Grab HTML References
 
 // Text
@@ -18,7 +22,7 @@ let clocks: Clock[] = [];
 // Game logic
 let MAX_GUESSES = 3;
 
-let answer = 1;
+let answer = 0;
 let isCorrect = true;
 let guesses = 0;
 
@@ -45,6 +49,8 @@ function initializeGameClocks(): void {
         clock.element.addEventListener('mouseout', handleMouseOut);
         clock.element.addEventListener('click', handleClick);
     }); 
+
+    answer = getRandomNumberInRange(0, 2);
 }
 
 function initializeGameHTML(): void {
@@ -99,7 +105,6 @@ initializeGameClocks();
 initializeGameHTML();
 
 playAgainButton.addEventListener("click", () => {
-    answer = 1;
     initializeGameClocks();
     initializeGameHTML();
 });
