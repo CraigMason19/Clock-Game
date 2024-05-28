@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
 
 :root {
-    --color-background: rgb(43,43,43);
+    --color-light-mode: whitesmoke;
+    --color-light-mode-text: rgb(60,60,60);
+
+    --color-dark-mode: rgb(43,43,43);
+    --color-dark-mode-text: whitesmoke;
+
     --hover-color: lightblue;
 
     --color-rim: cornflowerblue;
@@ -36,20 +41,100 @@
     --border-radius-hour: 5px;
 }
 
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: nowrap;
+
+
+    
+    font-family: 'Oswald', sans-serif;
+
+
+    background-color: var(--color-light-mode);
+    color: var(--color-light-mode-text);
+    border-bottom: 1px solid var(--color-light-mode-text);
+
+
+    width: 100%;
+    height: 100%;
+}
+
+.dark-mode {
+    background-color: var(--color-dark-mode);
+    border-bottom: 1px solidvar(--color-dark-mode-text);
+    color: var(--color-dark-mode-text);
+}
+
+header div {
+    flex: 1;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.title {
+    font-weight: bolder;
+    font-size: 1.5rem; 
+}
+
+.settings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+ 
+ 
+    font-size: 1.25rem; 
+    padding-right: 50px;
+}
+
+#completion-meter {
+    height: 30px;
+}
+
+.color-mode-btn {
+    background-color: var(--color-dark-mode);
+    border: 2px solid var(--color-dark-mode-text);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px; 
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+}
+
+
+
+
+
+
 body {
     display: grid;
     place-items: center;
-    grid-template-rows: 50% 10% 15% auto;
+    grid-template-rows: 8% 50% 10% 15% auto;
 
     height: 100vh;
-    background-color: var(--color-background);
+    width: 100vw;
+
+    background-color: var(--color-light-mode);
+    color: var(--color-light-mode-text);
+    border-bottom: 1px solid var(--color-light-mode-text);
+
     font-family: 'Oswald', sans-serif;
     overflow:hidden;
+    margin: 0px;
 }
 
 
 .question {
-    color: aliceblue;
     font-size: 2rem;
 }
 
@@ -70,7 +155,6 @@ body {
 
 #extra-info-text {
     font-size: 1.5rem;  
-    color: aliceblue;
 }
 
 #result-text, #extra-info-text {
@@ -100,7 +184,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;  
-    color: whitesmoke;
     font-size: 1.5rem;
 }
 
