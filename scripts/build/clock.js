@@ -50,7 +50,7 @@ export class Clock {
         this.hourHand = this.element.querySelector('[name="hour-hand"]');
         this.hourCenter = this.element.querySelector('[id="hour-center"]');
         this.debugString = this.element.querySelector('[name="debug-str"]');
-        this.debugString.innerText = this.place.timeZone + this.place.timeZoneName;
+        this.debugString.innerText = this.place.timeZone + "\n" + this.place.timeZoneName;
         console.log(this.debugString);
         this.enable();
     }

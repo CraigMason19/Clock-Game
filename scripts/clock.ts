@@ -41,7 +41,7 @@ export class Clock {
 
         this.debugString = this.element.querySelector('[name="debug-str"]')!;
 
-        this.debugString.innerText = this.place.timeZone + this.place.timeZoneName;
+        this.debugString.innerText = this.place.timeZone + "\n" + this.place.timeZoneName;
         console.log(this.debugString);
 
         this.enable();

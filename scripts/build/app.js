@@ -1,5 +1,5 @@
 import { Clock } from './clock.js';
-import { randomTimeZone } from './timeZones.js';
+import { getUniquePlaces } from './timeZones.js';
 // Grab HTML References
 // Text
 const questionText = document.getElementById("question");
@@ -8,30 +8,21 @@ const extraInfoText = document.getElementById("extra-info-text");
 // Buttons
 const playAgainButton = document.getElementById("play-again-button");
 const rootStyles = getComputedStyle(document.documentElement);
-// Clocks
-let clockOne;
-let clockTwo;
-let clockThree;
 let clocks = [];
 // Game logic
 let MAX_GUESSES = 3;
-let answer = randomTimeZone();
+let answer = 1;
 let isCorrect = true;
 let guesses = 0;
 // Game loop functions
-function initializeGameHTML() {
-    questionText.innerHTML = `Which clock shows the time in ${answer.name}?`;
-    questionText.style.display = "block";
-    answerText.style.display = 'none';
-    extraInfoText.style.display = 'none';
-    playAgainButton.style.display = 'none';
-}
 function initializeGameClocks() {
     // Clean up previous clocks if they exist
     clocks.forEach(clock => clock.disable());
-    clockOne = new Clock("clock-one", randomTimeZone());
-    clockTwo = new Clock("clock-two", answer);
-    clockThree = new Clock("clock-three", randomTimeZone());
+    // Get 3 UNIQUE timeZones
+    let uniquePlaces = getUniquePlaces(3);
+    let clockOne = new Clock("clock-one", uniquePlaces[0]);
+    let clockTwo = new Clock("clock-two", uniquePlaces[1]);
+    let clockThree = new Clock("clock-three", uniquePlaces[2]);
     clocks = [clockOne, clockTwo, clockThree];
     clocks.forEach(clock => {
         clock.animate();
@@ -40,6 +31,13 @@ function initializeGameClocks() {
         clock.element.addEventListener('mouseout', handleMouseOut);
         clock.element.addEventListener('click', handleClick);
     });
+}
+function initializeGameHTML() {
+    questionText.innerHTML = `Which clock shows the time in ${clocks[answer].place.name}?`;
+    questionText.style.display = "block";
+    answerText.style.display = 'none';
+    extraInfoText.style.display = 'none';
+    playAgainButton.style.display = 'none';
 }
 function handleMouseOver() {
     this.style.backgroundColor = rootStyles.getPropertyValue('--hover-color');
@@ -55,7 +53,7 @@ function handleClick() {
         questionText.style.display = "none";
         answerText.innerHTML = "Correct!!!";
         answerText.classList.add("answer-correct");
-        extraInfoText.innerHTML = `The time in ${answer.timeZone} is ${clock.toString()} ${answer.offset}`;
+        extraInfoText.innerHTML = `The time in ${clocks[answer].place.timeZone} is ${clock.toString()} ${clocks[answer].place.offset}`;
     }
     else if (guesses < 2) {
         answerText.innerHTML = "Incorrect sorry";
@@ -73,10 +71,10 @@ function handleClick() {
     playAgainButton.style.display = "block";
 }
 // First cycle
-initializeGameHTML();
 initializeGameClocks();
+initializeGameHTML();
 playAgainButton.addEventListener("click", () => {
-    answer = randomTimeZone();
-    initializeGameHTML();
+    answer = 1;
     initializeGameClocks();
+    initializeGameHTML();
 });
