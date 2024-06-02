@@ -41,19 +41,19 @@ export class Clock {
 
         this.debugString = this.element.querySelector('[name="debug-str"]')!;
 
-        this.debugString.innerText = this.place.timeZone + "\n" + this.place.timeZoneName;
+        this.debugString.innerText = this.place.fullname + "\n" + this.place.timeZone;
         console.log(this.debugString);
 
         this.enable();
     }
 
     currentTime(): Date {
-        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.place.timeZone });
+        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.place.fullname });
         return new Date(currentTimeString);
     }
 
     toString(): string {
-        return new Date().toLocaleTimeString('en-US', { timeZone: this.place.timeZone });
+        return new Date().toLocaleTimeString('en-US', { timeZone: this.place.fullname });
     }
 
     isEnabled(): boolean { return this.enabled; }

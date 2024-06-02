@@ -41,6 +41,11 @@
     --border-radius-hour: 5px;
 }
 
+a {
+    color: cornflowerblue;
+    font-family: 'Oswald', sans-serif;
+}
+
 header {
     display: flex;
     flex-direction: row;

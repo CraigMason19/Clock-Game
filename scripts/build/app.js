@@ -57,7 +57,9 @@ function handleClick() {
         questionText.style.display = "none";
         answerText.innerHTML = "Correct!!!";
         answerText.classList.add("answer-correct");
-        extraInfoText.innerHTML = `The time in ${clocks[answer].place.timeZone} is ${clock.toString()} ${clocks[answer].place.offset}`;
+        const place = clocks[answer].place;
+        const query = place.name;
+        extraInfoText.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}">${query}</a> is ${clock.toString()} ${place.offset}`;
     }
     else if (guesses < 2) {
         answerText.innerHTML = "Incorrect sorry";

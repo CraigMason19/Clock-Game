@@ -50,16 +50,16 @@ export class Clock {
         this.hourHand = this.element.querySelector('[name="hour-hand"]');
         this.hourCenter = this.element.querySelector('[id="hour-center"]');
         this.debugString = this.element.querySelector('[name="debug-str"]');
-        this.debugString.innerText = this.place.timeZone + "\n" + this.place.timeZoneName;
+        this.debugString.innerText = this.place.fullname + "\n" + this.place.timeZone;
         console.log(this.debugString);
         this.enable();
     }
     currentTime() {
-        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.place.timeZone });
+        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.place.fullname });
         return new Date(currentTimeString);
     }
     toString() {
-        return new Date().toLocaleTimeString('en-US', { timeZone: this.place.timeZone });
+        return new Date().toLocaleTimeString('en-US', { timeZone: this.place.fullname });
     }
     isEnabled() { return this.enabled; }
 }

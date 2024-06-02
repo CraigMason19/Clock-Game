@@ -1,34 +1,47 @@
-// Timezones are from https://www.iana.org/time-zones
+// Timezones are from the (IANA) -> Internet Assigned Numbers Authority 
+// https://www.iana.org/time-zones
 
 // Place names look like this
 // name: "London",
+// fullname: "Europe/London",
 // offset: "GMT+1",
-// timeZone: "Europe/London"
+// timeZone: "Europe"
 // timeZoneName: "British Summer Time"
 
 export interface Place {
     name: string;
+    fullname: string;
+    region: string;
+
     offset: string;
     timeZone: string;
-    timeZoneName: string;
 }
-
 
 // NOTE: Needed to add (Intl as any) & timeZone: any to work with typescript even though this runs in JS.
 
-function createTimeZoneData(timeZone: any) : Place {
-    const timeZoneName = new Intl.DateTimeFormat('en-GB',{timeZone:timeZone, timeZoneName:'long'}).formatToParts().find(part => part.type==='timeZoneName')!.value
-  
-    const offset = new Intl.DateTimeFormat('en-GB',{timeZone:timeZone, timeZoneName:'shortOffset'}).formatToParts().find(part => part.type==='timeZoneName')!.value
-  
-    let name = timeZone.split('/')[1].replaceAll('_', ' ');
-  
-    return { name, timeZone, timeZoneName, offset };
+function createTimeZoneData(timeZoneString: any) : Place {
+    const parts = timeZoneString.split('/');
+
+    const name = parts[parts.length - 1].replaceAll('_', ' ');
+    const region = parts.slice(0, parts.length - 1).join('/');
+
+    const offset = new Intl.DateTimeFormat('en-GB',{timeZone:timeZoneString, timeZoneName:'shortOffset'}).formatToParts().find(part => part.type==='timeZoneName')!.value
+    const timeZoneName = new Intl.DateTimeFormat('en-GB',{timeZone:timeZoneString, timeZoneName:'long'}).formatToParts().find(part => part.type==='timeZoneName')!.value
+    
+    return { fullname: timeZoneString, name, offset, region: region, timeZone: timeZoneName, };
 }
 
+/**
+ * An array of all timezones according to the (IANA) -> Internet Assigned Numbers Authority 
+ * @type {Place[]}
+ */
 export const PLACE_DATA: any[] = (Intl as any).supportedValuesOf('timeZone').map((timeZone: any) => createTimeZoneData(timeZone));
 
-export const LONDON: Place = PLACE_DATA.find(p => p.name === "London");
+/**
+ * Just because this is my timezone. (UK)
+ * @type {Place}
+ */
+export const LONDON: Place = PLACE_DATA.find(p => p.name === "London"); 
 
 export function randomPlace(): Place {
     const randomIndex = Math.floor(Math.random() * PLACE_DATA.length);
@@ -42,8 +55,8 @@ export function getUniquePlaces(n: number): Place[] {
     while (uniqueTimes.size < n) {
         let random = randomPlace();
 
-        if (!uniqueTimes.has(random.timeZoneName)) {
-            uniqueTimes.add(random.timeZoneName);
+        if (!uniqueTimes.has(random.timeZone)) {
+            uniqueTimes.add(random.timeZone);
             uniquePlaces.push(random);
         }
     }
