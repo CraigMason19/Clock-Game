@@ -51,7 +51,6 @@ export class Clock {
         this.hourCenter = this.element.querySelector('[id="hour-center"]');
         this.debugString = this.element.querySelector('[name="debug-str"]');
         this.debugString.innerText = this.place.fullname + "\n" + this.place.timeZone;
-        console.log(this.debugString);
         this.enable();
     }
     currentTime() {

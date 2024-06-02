@@ -82,7 +82,8 @@ function handleClick(this: HTMLElement): void {
         const place = clocks[answer].place;
         const query = place.name;
 
-        extraInfoText.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}">${query}</a> is ${clock.toString()} ${place.offset}`;
+        // target="_blank" is used to open the link in a new tab and keep the current game active 
+        extraInfoText.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
     } 
     else if (guesses < 2) {
         answerText.innerHTML = "Incorrect sorry";
