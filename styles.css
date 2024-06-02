@@ -50,6 +50,10 @@ a {
     color: blue;
 } */
 
+.question-name-highlight {
+    font-weight: bold;
+}
+
 header {
     display: flex;
     flex-direction: row;

@@ -37,7 +37,7 @@ function initializeGameClocks() {
     answer = getRandomNumberInRange(0, 2);
 }
 function initializeGameHTML() {
-    questionText.innerHTML = `Which clock shows the time in ${clocks[answer].place.name}?`;
+    questionText.innerHTML = `Which clock shows the time in <span class="question-name-highlight">${clocks[answer].place.name}</span>?`;
     questionText.style.display = "block";
     answerText.style.display = 'none';
     extraInfoText.style.display = 'none';
