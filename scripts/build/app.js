@@ -1,5 +1,6 @@
 import { Clock } from './clock.js';
 import { getUniquePlaces } from './timeZones.js';
+import { Timer } from './timer.js';
 function getRandomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -12,7 +13,10 @@ const extraInfoTextTwo = document.getElementById("extra-info-text-two");
 // Buttons
 const playAgainButton = document.getElementById("play-again-button");
 const rootStyles = getComputedStyle(document.documentElement);
+// UI
+const timerText = document.getElementById("timer-text");
 let clocks = [];
+let timer = new Timer(true);
 // Game logic
 let answer = 0;
 // Game loop functions
@@ -64,6 +68,12 @@ function handleClick() {
         extraInfoTextOne.style.display = "block";
         extraInfoTextTwo.style.display = "block";
         playAgainButton.style.display = "block";
+        clocks.forEach(c => {
+            // Clean up event listeners
+            c.element.removeEventListener('click', handleClick);
+            c.element.removeEventListener('mouseover', handleMouseOver);
+            c.element.removeEventListener('mouseout', handleMouseOut);
+        });
     }
     else {
         answerText.innerHTML = "Incorrect, sorry";
@@ -85,6 +95,12 @@ function handleClick() {
 // First cycle
 initializeGameClocks();
 initializeGameHTML();
+function updateTimer() {
+    timer.update();
+    timerText.innerHTML = timer.toString();
+    console.log(timer);
+}
+let timerInterval = window.setInterval(updateTimer, 1000);
 // Subsequent cycles
 playAgainButton.addEventListener("click", () => {
     initializeGameClocks();

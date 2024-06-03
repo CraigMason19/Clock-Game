@@ -104,6 +104,10 @@ header div {
     padding-right: 50px;
 }
 
+#timer-text {
+    overflow: hidden;
+}
+
 #completion-meter {
     height: 30px;
 }
