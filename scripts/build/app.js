@@ -14,10 +14,7 @@ const playAgainButton = document.getElementById("play-again-button");
 const rootStyles = getComputedStyle(document.documentElement);
 let clocks = [];
 // Game logic
-let MAX_GUESSES = 3;
 let answer = 0;
-let isCorrect = true;
-let guesses = 0;
 // Game loop functions
 function initializeGameClocks() {
     // Clean up previous clocks if they exist
@@ -55,21 +52,28 @@ function handleClick() {
     const clock = clocks.find(c => c.element === this);
     if (!clock)
         return;
-    if (isCorrect) {
+    if (clock.place === clocks[answer].place) {
         questionText.style.display = "none";
         answerText.innerHTML = "Correct!!!";
-        answerText.classList.add("answer-correct");
+        answerText.classList.remove("answer-incorrect");
         const place = clocks[answer].place;
         const query = place.name;
         // target="_blank" is used to open the link in a new tab and keep the current game active 
         extraInfoTextOne.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
         extraInfoTextTwo.innerHTML = `${place.timeZone}`;
+        extraInfoTextOne.style.display = "block";
+        extraInfoTextTwo.style.display = "block";
+        playAgainButton.style.display = "block";
     }
-    else if (guesses < 2) {
-        answerText.innerHTML = "Incorrect sorry";
+    else {
+        answerText.innerHTML = "Incorrect, sorry";
         answerText.classList.add("answer-incorrect");
+        extraInfoTextOne.innerHTML = "";
+        extraInfoTextOne.style.display = "none";
+        extraInfoTextTwo.innerHTML = "";
+        extraInfoTextTwo.style.display = "none";
+        playAgainButton.style.display = "none";
     }
-    guesses++;
     clock.disable();
     this.style.backgroundColor = '';
     // Clean up event listeners
@@ -77,13 +81,11 @@ function handleClick() {
     this.removeEventListener('mouseover', handleMouseOver);
     this.removeEventListener('mouseout', handleMouseOut);
     answerText.style.display = "block";
-    extraInfoTextOne.style.display = "block";
-    extraInfoTextTwo.style.display = "block";
-    playAgainButton.style.display = "block";
 }
 // First cycle
 initializeGameClocks();
 initializeGameHTML();
+// Subsequent cycles
 playAgainButton.addEventListener("click", () => {
     initializeGameClocks();
     initializeGameHTML();
