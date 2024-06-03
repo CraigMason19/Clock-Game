@@ -7,7 +7,8 @@ function getRandomNumberInRange(min, max) {
 // Text
 const questionText = document.getElementById("question");
 const answerText = document.getElementById("result-text");
-const extraInfoText = document.getElementById("extra-info-text");
+const extraInfoTextOne = document.getElementById("extra-info-text-one");
+const extraInfoTextTwo = document.getElementById("extra-info-text-two");
 // Buttons
 const playAgainButton = document.getElementById("play-again-button");
 const rootStyles = getComputedStyle(document.documentElement);
@@ -40,7 +41,8 @@ function initializeGameHTML() {
     questionText.innerHTML = `Which clock shows the time in <span class="question-name-highlight">${clocks[answer].place.name}</span>?`;
     questionText.style.display = "block";
     answerText.style.display = 'none';
-    extraInfoText.style.display = 'none';
+    extraInfoTextOne.style.display = 'none';
+    extraInfoTextTwo.style.display = 'none';
     playAgainButton.style.display = 'none';
 }
 function handleMouseOver() {
@@ -60,7 +62,8 @@ function handleClick() {
         const place = clocks[answer].place;
         const query = place.name;
         // target="_blank" is used to open the link in a new tab and keep the current game active 
-        extraInfoText.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
+        extraInfoTextOne.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
+        extraInfoTextTwo.innerHTML = `${place.timeZone}`;
     }
     else if (guesses < 2) {
         answerText.innerHTML = "Incorrect sorry";
@@ -74,7 +77,8 @@ function handleClick() {
     this.removeEventListener('mouseover', handleMouseOver);
     this.removeEventListener('mouseout', handleMouseOut);
     answerText.style.display = "block";
-    extraInfoText.style.display = "block";
+    extraInfoTextOne.style.display = "block";
+    extraInfoTextTwo.style.display = "block";
     playAgainButton.style.display = "block";
 }
 // First cycle

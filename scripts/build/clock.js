@@ -1,3 +1,4 @@
+import { DEFAULT_LOCATION } from './timeZones.js';
 const SECONDS_INTERVAL = 360 / 60;
 const MINUTES_INTERVAL = 360 / 60;
 const HOURS_INTERVAL = 360 / 12;
@@ -54,11 +55,11 @@ export class Clock {
         this.enable();
     }
     currentTime() {
-        const currentTimeString = new Date().toLocaleString('en-US', { timeZone: this.place.fullname });
+        const currentTimeString = new Date().toLocaleString(DEFAULT_LOCATION, { timeZone: this.place.fullname });
         return new Date(currentTimeString);
     }
     toString() {
-        return new Date().toLocaleTimeString('en-US', { timeZone: this.place.fullname });
+        return new Date().toLocaleTimeString(DEFAULT_LOCATION, { timeZone: this.place.fullname });
     }
     isEnabled() { return this.enabled; }
 }

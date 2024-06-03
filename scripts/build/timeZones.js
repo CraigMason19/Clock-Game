@@ -1,12 +1,13 @@
 // Timezones are from the (IANA) -> Internet Assigned Numbers Authority 
 // https://www.iana.org/time-zones
+export const DEFAULT_LOCATION = "en-GB";
 // NOTE: Needed to add (Intl as any) & timeZone: any to work with typescript even though this runs in JS.
 function createTimeZoneData(timeZoneString) {
     const parts = timeZoneString.split('/');
     const name = parts[parts.length - 1].replaceAll('_', ' ');
     const region = parts.slice(0, parts.length - 1).join('/');
-    const offset = new Intl.DateTimeFormat('en-GB', { timeZone: timeZoneString, timeZoneName: 'shortOffset' }).formatToParts().find(part => part.type === 'timeZoneName').value;
-    const timeZoneName = new Intl.DateTimeFormat('en-GB', { timeZone: timeZoneString, timeZoneName: 'long' }).formatToParts().find(part => part.type === 'timeZoneName').value;
+    const offset = new Intl.DateTimeFormat(DEFAULT_LOCATION, { timeZone: timeZoneString, timeZoneName: 'shortOffset' }).formatToParts().find(part => part.type === 'timeZoneName').value;
+    const timeZoneName = new Intl.DateTimeFormat(DEFAULT_LOCATION, { timeZone: timeZoneString, timeZoneName: 'long' }).formatToParts().find(part => part.type === 'timeZoneName').value;
     return { fullname: timeZoneString, name, offset, region: region, timeZone: timeZoneName, };
 }
 /**

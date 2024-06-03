@@ -10,7 +10,8 @@ function getRandomNumberInRange(min: number, max: number): number {
 // Text
 const questionText = document.getElementById("question") as HTMLParagraphElement;
 const answerText = document.getElementById("result-text") as HTMLParagraphElement;
-const extraInfoText = document.getElementById("extra-info-text") as HTMLParagraphElement;
+const extraInfoTextOne = document.getElementById("extra-info-text-one") as HTMLParagraphElement;
+const extraInfoTextTwo = document.getElementById("extra-info-text-two") as HTMLParagraphElement;
 
 // Buttons
 const playAgainButton = document.getElementById("play-again-button") as HTMLButtonElement;
@@ -58,7 +59,9 @@ function initializeGameHTML(): void {
     questionText.style.display = "block";
 
     answerText.style.display = 'none';
-    extraInfoText.style.display = 'none';
+    extraInfoTextOne.style.display = 'none';
+    extraInfoTextTwo.style.display = 'none';
+
     playAgainButton.style.display = 'none';
 }
 
@@ -83,7 +86,8 @@ function handleClick(this: HTMLElement): void {
         const query = place.name;
 
         // target="_blank" is used to open the link in a new tab and keep the current game active 
-        extraInfoText.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
+        extraInfoTextOne.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
+        extraInfoTextTwo.innerHTML = `${place.timeZone}`;
     } 
     else if (guesses < 2) {
         answerText.innerHTML = "Incorrect sorry";
@@ -100,7 +104,9 @@ function handleClick(this: HTMLElement): void {
     this.removeEventListener('mouseout', handleMouseOut);
 
     answerText.style.display = "block";
-    extraInfoText.style.display = "block";
+    extraInfoTextOne.style.display = "block";
+    extraInfoTextTwo.style.display = "block";
+
     playAgainButton.style.display = "block";
 
 }
