@@ -1,8 +1,15 @@
+import { Timer } from './timer.js';
 import { Clock } from './clock.js';
 import { getUniquePlaces } from './timeZones.js';
-import { Timer } from './timer.js';
 function getRandomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function calculateWinPercentage(gamesPlayed, gamesWon, decimalPlaces = 2) {
+    if (gamesPlayed === 0) {
+        return "0." + "0".repeat(decimalPlaces) + '%';
+    }
+    let winPercentage = (gamesWon / gamesPlayed) * 100;
+    return winPercentage.toFixed(decimalPlaces) + '%';
 }
 // Grab HTML References
 // Text
@@ -15,20 +22,25 @@ const playAgainButton = document.getElementById("play-again-button");
 const rootStyles = getComputedStyle(document.documentElement);
 // UI
 const timerText = document.getElementById("timer-text");
+const winCounter = document.getElementById("win-counter");
+const winPercentage = document.getElementById("win-percentage");
 let clocks = [];
 let timer = new Timer(true);
 // Game logic
-let answer = 0;
+let answerIndex = 0;
+let gamesPlayed = 0;
+let gamesWon = 0;
 // Game loop functions
 function initializeGameClocks() {
-    // Clean up previous clocks if they exist
-    clocks.forEach(clock => clock.disable());
+    // Clean up previous clocks in the DOM
+    clocks.forEach(c => c.reset());
     // Get 3 UNIQUE timeZones
     let uniquePlaces = getUniquePlaces(3);
     let clockOne = new Clock("clock-one", uniquePlaces[0]);
     let clockTwo = new Clock("clock-two", uniquePlaces[1]);
     let clockThree = new Clock("clock-three", uniquePlaces[2]);
     clocks = [clockOne, clockTwo, clockThree];
+    console.log(clocks);
     clocks.forEach(clock => {
         clock.animate();
         // Attach event listeners for clocks
@@ -36,15 +48,19 @@ function initializeGameClocks() {
         clock.element.addEventListener('mouseout', handleMouseOut);
         clock.element.addEventListener('click', handleClick);
     });
-    answer = getRandomNumberInRange(0, 2);
+    answerIndex = getRandomNumberInRange(0, 2);
 }
 function initializeGameHTML() {
-    questionText.innerHTML = `Which clock shows the time in <span class="question-name-highlight">${clocks[answer].place.name}</span>?`;
+    questionText.innerHTML = `Which clock shows the time in <span class="question-name-highlight">${clocks[answerIndex].place.name}</span>?`;
     questionText.style.display = "block";
     answerText.style.display = 'none';
     extraInfoTextOne.style.display = 'none';
     extraInfoTextTwo.style.display = 'none';
     playAgainButton.style.display = 'none';
+}
+function updateGameCounters() {
+    winCounter.innerHTML = gamesWon === 1 ? `1 win` : `${gamesWon.toString()} wins`;
+    winPercentage.innerHTML = calculateWinPercentage(gamesPlayed, gamesWon);
 }
 function handleMouseOver() {
     this.style.backgroundColor = rootStyles.getPropertyValue('--hover-color');
@@ -56,11 +72,16 @@ function handleClick() {
     const clock = clocks.find(c => c.element === this);
     if (!clock)
         return;
-    if (clock.place === clocks[answer].place) {
+    if (clock.place === clocks[answerIndex].place) {
         questionText.style.display = "none";
         answerText.innerHTML = "Correct!!!";
         answerText.classList.remove("answer-incorrect");
-        const place = clocks[answer].place;
+        // Disable clocks
+        let wrongClocks = [0, 1, 2].filter(x => x != answerIndex);
+        wrongClocks.forEach(x => clocks[x].disable());
+        // Show Green
+        clocks[answerIndex].displayCorrect();
+        const place = clocks[answerIndex].place;
         const query = place.name;
         // target="_blank" is used to open the link in a new tab and keep the current game active 
         extraInfoTextOne.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
@@ -68,6 +89,8 @@ function handleClick() {
         extraInfoTextOne.style.display = "block";
         extraInfoTextTwo.style.display = "block";
         playAgainButton.style.display = "block";
+        gamesWon++;
+        updateGameCounters();
         clocks.forEach(c => {
             // Clean up event listeners
             c.element.removeEventListener('click', handleClick);
@@ -83,8 +106,8 @@ function handleClick() {
         extraInfoTextTwo.innerHTML = "";
         extraInfoTextTwo.style.display = "none";
         playAgainButton.style.display = "none";
+        clock.disable();
     }
-    clock.disable();
     this.style.backgroundColor = '';
     // Clean up event listeners
     this.removeEventListener('click', handleClick);
@@ -95,14 +118,17 @@ function handleClick() {
 // First cycle
 initializeGameClocks();
 initializeGameHTML();
+updateGameCounters();
 function updateTimer() {
     timer.update();
     timerText.innerHTML = timer.toString();
-    console.log(timer);
 }
+// requestAnimationFrame(updateTimer);
 let timerInterval = window.setInterval(updateTimer, 1000);
 // Subsequent cycles
 playAgainButton.addEventListener("click", () => {
+    gamesPlayed++;
     initializeGameClocks();
     initializeGameHTML();
+    updateGameCounters();
 });

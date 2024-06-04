@@ -40,6 +40,25 @@ export class Clock {
             this.hourHand.classList.add("hour-hand-disabled");
             this.hourCenter.classList.add("hour-hand-disabled");
         };
+        this.displayCorrect = () => {
+            this.enabled = false;
+            this.element.classList.add("clock-correct");
+            this.secondHand.classList.add("second-hand-correct");
+            this.secondCenter.classList.add("second-hand-correct");
+            this.minuteHand.classList.add("minute-hand-correct");
+            this.minuteCenter.classList.add("minute-hand-correct");
+            this.hourHand.classList.add("hour-hand-correct");
+            this.hourCenter.classList.add("hour-hand-correct");
+        };
+        this.reset = () => {
+            this.element.classList.remove("clock-correct");
+            this.secondHand.classList.remove("second-hand-correct");
+            this.secondCenter.classList.remove("second-hand-correct");
+            this.minuteHand.classList.remove("minute-hand-correct");
+            this.minuteCenter.classList.remove("minute-hand-correct");
+            this.hourHand.classList.remove("hour-hand-correct");
+            this.hourCenter.classList.remove("hour-hand-correct");
+        };
         this.name = name;
         this.place = place;
         this.element = document.getElementById(name);

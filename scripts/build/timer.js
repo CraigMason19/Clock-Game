@@ -37,20 +37,3 @@ export class Timer {
         return `${hourStr}:${minuteStr}:${secondStr}`;
     }
 }
-// let timerInterval = null;
-// let timerStatus = "stopped"
-// reset
-//     window.clearInterval(timerInterval);
-// startButton.addEventListener('click', function() {
-//     if(timerStatus === 'stopped') {
-//         timerInterval = window.setInterval(stopwatch, 1000);
-//         startButton.innerHTML = '<i class="fa-solid fa-pause" id="pause"></i>';
-//         timerStatus = 'running';
-//     }
-//     else {
-//         pauseTimer();
-//     }
-// });
-// resetButton.addEventListener('click', function() {
-//     resetTimer();
-// // });

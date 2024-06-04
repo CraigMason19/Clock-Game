@@ -11,15 +11,20 @@
 
     --color-rim: cornflowerblue;
     --color-rim-disabled: rgb(120,120,120);
+    --color-rim-correct: green;
 
     --color-second: rgb(80,80,80);
     --color-second-disabled: rgb(120,120,120);
+    --color-second-correct: rgb(94, 224, 94);
 
     --color-minute: #297e22;
     --color-minute-disabled: rgb(100,100,100);
+    --color-minute-correct: rgb(16, 146, 16);
 
     --color-hour: brown;
     --color-hour-disabled: rgb(80,80,80);
+    --color-hour-correct: green;
+
 
 
     --size-clock: 300px;
@@ -108,14 +113,19 @@ header div {
     overflow: hidden;
 }
 
-#completion-meter {
+#win-meter {
     height: 30px;
+}
+
+#play-again-button {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem; 
 }
 
 .color-mode-btn {
     background-color: var(--color-dark-mode);
     border: 2px solid var(--color-dark-mode-text);
-    color: white;
+
     padding: 15px;
     text-align: center;
     text-decoration: none;
@@ -181,7 +191,7 @@ body {
 
 
 .result {
-    color: greenyellow;
+    color: var(--color-rim-correct);
 }
 
 .answer-incorrect {
@@ -212,6 +222,7 @@ body {
     border-radius: 50%;
     border: solid 6px;
     border-color: var(--color-rim);
+    background-color: rgb(241, 239, 219);
 }
 
 #clock-two {
@@ -295,6 +306,7 @@ body {
 
 .clock-disabled {
     border-color: var(--color-rim-disabled) !important; /* Take priority */
+    background-color: lightgray;
 }
 
 .second-hand-disabled {
@@ -307,4 +319,21 @@ body {
 
 .hour-hand-disabled {
     background-color: var(--color-hour-disabled) !important;
+}
+
+.clock-correct {
+    border-color: var(--color-rim-correct) !important; /* Take priority */
+    background-color: lightgreen;
+}
+
+.second-hand-correct {
+    background-color: var(--color-second-correct) !important;
+}
+
+.minute-hand-correct {
+    background-color: var(--color-minute-correct) !important;
+}
+
+.hour-hand-correct {
+    background-color: var(--color-hour-correct) !important;
 }
