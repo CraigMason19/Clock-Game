@@ -6,10 +6,10 @@ function getRandomNumberInRange(min, max) {
 }
 function calculateWinPercentage(gamesPlayed, gamesWon, decimalPlaces = 2) {
     if (gamesPlayed === 0) {
-        return "0." + "0".repeat(decimalPlaces) + '%';
+        return "0." + "0".repeat(decimalPlaces);
     }
     let winPercentage = (gamesWon / gamesPlayed) * 100;
-    return winPercentage.toFixed(decimalPlaces) + '%';
+    return winPercentage.toFixed(decimalPlaces);
 }
 // Grab HTML References
 // Text
@@ -24,12 +24,14 @@ const rootStyles = getComputedStyle(document.documentElement);
 const timerText = document.getElementById("timer-text");
 const winCounter = document.getElementById("win-counter");
 const winPercentage = document.getElementById("win-percentage");
+const winMeter = document.getElementById("win-meter");
 let clocks = [];
 let timer = new Timer(true);
 // Game logic
 let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
+let gameOver = false;
 // Game loop functions
 function initializeGameClocks() {
     // Clean up previous clocks in the DOM
@@ -40,7 +42,6 @@ function initializeGameClocks() {
     let clockTwo = new Clock("clock-two", uniquePlaces[1]);
     let clockThree = new Clock("clock-three", uniquePlaces[2]);
     clocks = [clockOne, clockTwo, clockThree];
-    console.log(clocks);
     clocks.forEach(clock => {
         clock.animate();
         // Attach event listeners for clocks
@@ -60,7 +61,9 @@ function initializeGameHTML() {
 }
 function updateGameCounters() {
     winCounter.innerHTML = gamesWon === 1 ? `1 win` : `${gamesWon.toString()} wins`;
-    winPercentage.innerHTML = calculateWinPercentage(gamesPlayed, gamesWon);
+    let result = calculateWinPercentage(gamesPlayed, gamesWon);
+    winPercentage.innerHTML = result + '%';
+    winMeter.value = Number(result);
 }
 function handleMouseOver() {
     this.style.backgroundColor = rootStyles.getPropertyValue('--hover-color');
@@ -83,7 +86,7 @@ function handleClick() {
         clocks[answerIndex].displayCorrect();
         const place = clocks[answerIndex].place;
         const query = place.name;
-        // target="_blank" is used to open the link in a new tab and keep the current game active 
+        // target="_blank" is used to open the link in a new tab and keep the current game active
         extraInfoTextOne.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
         extraInfoTextTwo.innerHTML = `${place.timeZone}`;
         extraInfoTextOne.style.display = "block";
@@ -123,11 +126,11 @@ function updateTimer() {
     timer.update();
     timerText.innerHTML = timer.toString();
 }
-// requestAnimationFrame(updateTimer);
 let timerInterval = window.setInterval(updateTimer, 1000);
 // Subsequent cycles
 playAgainButton.addEventListener("click", () => {
     gamesPlayed++;
+    gameOver = false;
     initializeGameClocks();
     initializeGameHTML();
     updateGameCounters();

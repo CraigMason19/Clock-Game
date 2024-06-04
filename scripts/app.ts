@@ -8,11 +8,11 @@ function getRandomNumberInRange(min: number, max: number): number {
 
 function calculateWinPercentage(gamesPlayed: number, gamesWon: number, decimalPlaces: number=2): string {
     if (gamesPlayed === 0) {
-        return "0." + "0".repeat(decimalPlaces) + '%';
+        return "0." + "0".repeat(decimalPlaces);
     }
     
     let winPercentage = (gamesWon / gamesPlayed) * 100;
-    return winPercentage.toFixed(decimalPlaces) + '%';
+    return winPercentage.toFixed(decimalPlaces);
 }
 
 // Grab HTML References
@@ -32,18 +32,16 @@ const rootStyles = getComputedStyle(document.documentElement);
 const timerText = document.getElementById("timer-text") as HTMLParagraphElement;
 const winCounter = document.getElementById("win-counter") as HTMLParagraphElement;
 const winPercentage = document.getElementById("win-percentage") as HTMLParagraphElement;
-
-
-
+const winMeter = document.getElementById("win-meter") as HTMLMeterElement;
 
 let clocks: Clock[] = [];
-
 let timer = new Timer(true);
 
 // Game logic
 let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
+let gameOver = false;
 
 // Game loop functions
 
@@ -59,17 +57,15 @@ function initializeGameClocks(): void {
     let clockThree = new Clock("clock-three", uniquePlaces[2]);
 
     clocks = [clockOne, clockTwo, clockThree];
-    console.log(clocks);
-
 
     clocks.forEach(clock => {
-        clock.animate()
+        clock.animate();
 
         // Attach event listeners for clocks
         clock.element.addEventListener('mouseover', handleMouseOver);
         clock.element.addEventListener('mouseout', handleMouseOut);
         clock.element.addEventListener('click', handleClick);
-    }); 
+    });
 
     answerIndex = getRandomNumberInRange(0, 2);
 }
@@ -87,7 +83,11 @@ function initializeGameHTML(): void {
 
 function updateGameCounters() {
     winCounter.innerHTML = gamesWon === 1 ? `1 win` : `${gamesWon.toString()} wins`;
-    winPercentage.innerHTML = calculateWinPercentage(gamesPlayed, gamesWon);
+
+    let result = calculateWinPercentage(gamesPlayed, gamesWon)
+
+    winPercentage.innerHTML = result + '%';
+    winMeter.value = Number(result);
 }
 
 function handleMouseOver(this: HTMLElement): void {
@@ -108,27 +108,22 @@ function handleClick(this: HTMLElement): void {
         answerText.classList.remove("answer-incorrect");
 
         // Disable clocks
-        let wrongClocks = [0,1,2].filter(x => x != answerIndex);
+        let wrongClocks = [0, 1, 2].filter(x => x != answerIndex);
         wrongClocks.forEach(x => clocks[x].disable());
 
         // Show Green
         clocks[answerIndex].displayCorrect();
 
-
-
-
-
-
         const place = clocks[answerIndex].place;
         const query = place.name;
 
-        // target="_blank" is used to open the link in a new tab and keep the current game active 
+        // target="_blank" is used to open the link in a new tab and keep the current game active
         extraInfoTextOne.innerHTML = `The time in ${place.region}/<a href="https://www.google.com/search?q=${query}" target="_blank">${query}</a> is ${clock.toString()} ${place.offset}`;
         extraInfoTextTwo.innerHTML = `${place.timeZone}`;
 
         extraInfoTextOne.style.display = "block";
         extraInfoTextTwo.style.display = "block";
-    
+
         playAgainButton.style.display = "block";
 
         gamesWon++;
@@ -141,8 +136,7 @@ function handleClick(this: HTMLElement): void {
             c.element.removeEventListener('mouseout', handleMouseOut);
         });
 
-    } 
-    else {
+    } else {
         answerText.innerHTML = "Incorrect, sorry";
         answerText.classList.add("answer-incorrect");
 
@@ -155,7 +149,6 @@ function handleClick(this: HTMLElement): void {
         playAgainButton.style.display = "none";
 
         clock.disable();
-
     }
 
     this.style.backgroundColor = '';
@@ -178,13 +171,12 @@ function updateTimer() {
     timerText.innerHTML = timer.toString();
 }
 
-
-// requestAnimationFrame(updateTimer);
 let timerInterval = window.setInterval(updateTimer, 1000);
 
 // Subsequent cycles
 playAgainButton.addEventListener("click", () => {
     gamesPlayed++;
+    gameOver = false;
     initializeGameClocks();
     initializeGameHTML();
     updateGameCounters();
