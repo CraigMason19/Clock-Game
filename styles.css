@@ -9,6 +9,9 @@
 
     --hover-color: lightblue;
 
+    --color-clock: rgb(236, 233, 226);
+    --color-clock-correct: #84ca9e; 
+
     --color-rim: cornflowerblue;
     --color-rim-disabled: rgb(120,120,120);
     --color-rim-correct: green;
@@ -119,7 +122,19 @@ header div {
 
 #play-again-button {
     font-family: 'Oswald', sans-serif;
-    font-size: 1.25rem; 
+    font-size: 1.75rem; 
+    padding: 1rem 2rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-light-mode);
+    background: #22C55E;
+    border-radius: 0.5rem;
+}
+
+#play-again-button:hover {
+    border: 3px solid var(--color-light-mode);
+    box-shadow: 0 0 0 3px #22C55E;
 }
 
 .color-mode-btn {
@@ -222,7 +237,7 @@ body {
     border-radius: 50%;
     border: solid 6px;
     border-color: var(--color-rim);
-    background-color: rgb(241, 239, 219);
+    background-color: var(--color-clock);
 }
 
 #clock-two {
@@ -323,7 +338,7 @@ body {
 
 .clock-correct {
     border-color: var(--color-rim-correct) !important; /* Take priority */
-    background-color: lightgreen;
+    background-color: var(--color-clock-correct) !important;
 }
 
 .second-hand-correct {
