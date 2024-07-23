@@ -7,22 +7,22 @@
     <title>Analog Clock Game - Where am I?</title>
 </head>
 
-<header id="header">
-    <div>
-        <p>About</p>
+<header>
+    <div class="header-section settings">
+        <button id="color-mode-btn" class="color-mode-btn"></button>
+        <button>About</button>
+        <p>Placeholder</p>
     </div>
     <div>
-        <p id="title" class="title">Analog Clock Game</p>
+        <p id="title">Analog Clock Game</p>
     </div>
-    <div class="settings">
+    <div class="header-section stats">
         <p id="timer-text">0:00:00</p>
         <p id="win-counter">56 Wins</p>
         <p id="win-percentage">53.83%</p>
         <meter id="win-meter" min="0" max="100" low="25" high="60" optimum="70" value="65"></meter>
-        <button id="color-mode-btn" class="color-mode-btn"></button>
     </div>
 </header>
-
 
 <body id="body">
     <div class="clocks">
@@ -65,7 +65,6 @@
         </div>
     </div>
 
-
     <div class="question">
         <p id="question"></p>
     </div>
@@ -81,10 +80,7 @@
         <button id="play-again-button" type="button">Play Again</button>
     </div>
 
-
-
     <script type="module" src="scripts/build/app.js"></script>
-
 </body>
 
 </html>
