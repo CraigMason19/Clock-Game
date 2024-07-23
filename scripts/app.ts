@@ -1,6 +1,8 @@
 import { Timer } from './timer.js';
 import { Clock } from './clock.js';
 import { getUniquePlaces, Place } from './timeZones.js';
+import { GameState, GameMode } from './game-state.js';
+
 
 function getRandomNumberInRange(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -38,10 +40,11 @@ let clocks: Clock[] = [];
 let timer = new Timer(true);
 
 // Game logic
+//let gameState = new GameState(GameMode.Loose);
 let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
-let gameOver = false;
+
 
 // Game loop functions
 
@@ -65,7 +68,9 @@ function initializeGameClocks(): void {
         clock.element.addEventListener('mouseover', handleMouseOver);
         clock.element.addEventListener('mouseout', handleMouseOut);
         clock.element.addEventListener('click', handleClick);
+
     });
+
 
     answerIndex = getRandomNumberInRange(0, 2);
 }
@@ -136,7 +141,8 @@ function handleClick(this: HTMLElement): void {
             c.element.removeEventListener('mouseout', handleMouseOut);
         });
 
-    } else {
+    } 
+    else {
         answerText.innerHTML = "Incorrect, sorry";
         answerText.classList.add("answer-incorrect");
 
@@ -161,6 +167,12 @@ function handleClick(this: HTMLElement): void {
     answerText.style.display = "block";
 }
 
+
+
+
+
+
+
 // First cycle
 initializeGameClocks();
 initializeGameHTML();
@@ -176,7 +188,8 @@ let timerInterval = window.setInterval(updateTimer, 1000);
 // Subsequent cycles
 playAgainButton.addEventListener("click", () => {
     gamesPlayed++;
-    gameOver = false;
+    // gameState = new GameState(GameMode.Loose);
+
     initializeGameClocks();
     initializeGameHTML();
     updateGameCounters();

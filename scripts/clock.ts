@@ -1,5 +1,11 @@
 import { Place, DEFAULT_LOCATION } from './timeZones.js';
 
+interface Time {
+    hours: number;
+    minutes: number;
+    seconds: number;
+}
+
 const SECONDS_INTERVAL = 360 / 60;
 const MINUTES_INTERVAL = 360 / 60;
 const HOURS_INTERVAL = 360 / 12;
@@ -46,9 +52,25 @@ export class Clock {
         this.enable();
     }
 
-    currentTime(): Date {
-        const currentTimeString = new Date().toLocaleString(DEFAULT_LOCATION, { timeZone: this.place.fullname });
-        return new Date(currentTimeString);
+    currentTime(): Time {
+        let currentTimeString = new Date().toLocaleString(DEFAULT_LOCATION, {
+            timeZone: this.place.fullname,
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true
+        });
+
+        // Remove AM or PM
+        currentTimeString = currentTimeString.split(" ")[0];
+
+        const [hours, minutes, seconds] = currentTimeString.split(':').map(Number);
+
+        return {
+            hours: hours,
+            minutes: minutes,
+            seconds: seconds,
+        };
     }
 
     toString(): string {
@@ -61,14 +83,10 @@ export class Clock {
         if(this.enabled)
         {
             const time = this.currentTime();
-
-            const seconds = time.getSeconds();
-            const minutes = time.getMinutes();
-            const hours = time.getHours();
             
-            const secondRotation = SECONDS_INTERVAL * seconds;
-            const minuteRotation = MINUTES_INTERVAL * minutes + (seconds / 10);
-            const hourRotation = HOURS_INTERVAL * hours + (MINUTES_INTERVAL / 12) * minutes;
+            const secondRotation = SECONDS_INTERVAL * time.seconds;
+            const minuteRotation = MINUTES_INTERVAL * time.minutes + (time.seconds / 10);
+            const hourRotation = HOURS_INTERVAL * time.hours + (MINUTES_INTERVAL / 12) * time.minutes;
         
             this.secondHand.style.transform = `rotate(${secondRotation}deg)`;
             this.minuteHand.style.transform = `rotate(${minuteRotation}deg)`;

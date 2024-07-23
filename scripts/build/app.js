@@ -28,10 +28,10 @@ const winMeter = document.getElementById("win-meter");
 let clocks = [];
 let timer = new Timer(true);
 // Game logic
+//let gameState = new GameState(GameMode.Loose);
 let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
-let gameOver = false;
 // Game loop functions
 function initializeGameClocks() {
     // Clean up previous clocks in the DOM
@@ -130,7 +130,7 @@ let timerInterval = window.setInterval(updateTimer, 1000);
 // Subsequent cycles
 playAgainButton.addEventListener("click", () => {
     gamesPlayed++;
-    gameOver = false;
+    // gameState = new GameState(GameMode.Loose);
     initializeGameClocks();
     initializeGameHTML();
     updateGameCounters();
