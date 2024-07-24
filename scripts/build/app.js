@@ -1,6 +1,6 @@
 import { Timer } from './timer.js';
 import { Clock } from './clock.js';
-import { getUniquePlaces } from './timeZones.js';
+import { getUniquePlaces } from './time-zones.js';
 function getRandomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }

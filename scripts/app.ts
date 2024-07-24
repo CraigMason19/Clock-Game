@@ -1,6 +1,6 @@
 import { Timer } from './timer.js';
 import { Clock } from './clock.js';
-import { getUniquePlaces, Place } from './timeZones.js';
+import { getUniquePlaces, Place } from './time-zones.js';
 import { GameState, GameMode } from './game-state.js';
 
 

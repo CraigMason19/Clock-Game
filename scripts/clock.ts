@@ -1,4 +1,4 @@
-import { Place, DEFAULT_LOCATION } from './timeZones.js';
+import { Place, DEFAULT_LOCATION } from './time-zones.js';
 
 interface Time {
     hours: number;

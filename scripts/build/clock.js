@@ -1,4 +1,4 @@
-import { DEFAULT_LOCATION } from './timeZones.js';
+import { DEFAULT_LOCATION } from './time-zones.js';
 const SECONDS_INTERVAL = 360 / 60;
 const MINUTES_INTERVAL = 360 / 60;
 const HOURS_INTERVAL = 360 / 12;
