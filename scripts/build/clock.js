@@ -60,13 +60,13 @@ export class Clock {
         this.place = place;
         this.element = document.getElementById(name);
         // ! -> This means I know it exists and will not be null
-        this.secondHand = this.element.querySelector('[name="second-hand"]');
+        this.secondHand = this.element.querySelector('[id="second-hand"]');
         this.secondCenter = this.element.querySelector('[id="second-center"]');
-        this.minuteHand = this.element.querySelector('[name="minute-hand"]');
+        this.minuteHand = this.element.querySelector('[id="minute-hand"]');
         this.minuteCenter = this.element.querySelector('[id="minute-center"]');
-        this.hourHand = this.element.querySelector('[name="hour-hand"]');
+        this.hourHand = this.element.querySelector('[id="hour-hand"]');
         this.hourCenter = this.element.querySelector('[id="hour-center"]');
-        this.debugString = this.element.querySelector('[name="debug-str"]');
+        this.debugString = this.element.querySelector('[id="debug-str"]');
         this.debugString.innerText = this.place.fullname + "\n" + this.place.timeZone;
         this.enable();
     }
