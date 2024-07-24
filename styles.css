@@ -223,6 +223,14 @@ body {
     color: brown;
 }
 
+#debug-str {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    font-size: 1.5rem;
+}
+
+
 .clocks {
     width:100%;
     height: 100%;
@@ -232,12 +240,7 @@ body {
     align-items: center;  
 }
 
-#debug-str {
-    display: flex;
-    justify-content: center;
-    align-items: center;  
-    font-size: 1.5rem;
-}
+/*#region Clock*/
 
 .clock {
     position: relative;
@@ -264,27 +267,7 @@ body {
     transform-origin: bottom;
 }
 
-#second-hand, hand {
-    height: var(--height-second);
-    width: var(--width-second);
-
-    left: calc(50% - var(--width-second) / 2);
-
-    border-radius: var(--border-radius-second);
-    background-color: var(--color-second);
-}
-
-#minute-hand, hand {
-    height: var(--height-minute);
-    width: var(--width-minute);
-
-    left: calc(50% - var(--width-minute) / 2);
-
-    border-radius: var(--border-radius-minute);
-    background-color: var(--color-minute);
-}
-
-#hour-hand, hand {
+.hour-hand {
     height: var(--height-hour);
     width: var(--width-hour);
 
@@ -294,22 +277,42 @@ body {
     background-color: var(--color-hour);
 }
 
+.minute-hand {
+    height: var(--height-minute);
+    width: var(--width-minute);
+
+    left: calc(50% - var(--width-minute) / 2);
+
+    border-radius: var(--border-radius-minute);
+    background-color: var(--color-minute);
+}
+
+.second-hand {
+    height: var(--height-second);
+    width: var(--width-second);
+
+    left: calc(50% - var(--width-second) / 2);
+
+    border-radius: var(--border-radius-second);
+    background-color: var(--color-second);
+}
+
 .center {
     position: absolute;
     border-radius: 50%;
 }
 
-#second-center, center {
-    width: var(--size-second-center);
-    height: var(--size-second-center);
+.hour-center {
+    width: var(--size-hour-center);
+    height: var(--size-hour-center);
 
-    left: calc(50% - (var(--size-second-center) / 2));
-    bottom: calc(50% - (var(--size-second-center) / 2));
+    left: calc(50% - (var(--size-hour-center) / 2));
+    bottom: calc(50% - (var(--size-hour-center) / 2));
 
-    background-color: var(--color-second);
+    background-color: var(--color-hour);
 }
 
-#minute-center, center {
+.minute-center {
     width: var(--size-minute-center);
     height: var(--size-minute-center);
 
@@ -319,14 +322,14 @@ body {
     background-color: var(--color-minute);
 }
 
-#hour-center, center {
-    width: var(--size-hour-center);
-    height: var(--size-hour-center);
+.second-center {
+    width: var(--size-second-center);
+    height: var(--size-second-center);
 
-    left: calc(50% - (var(--size-hour-center) / 2));
-    bottom: calc(50% - (var(--size-hour-center) / 2));
+    left: calc(50% - (var(--size-second-center) / 2));
+    bottom: calc(50% - (var(--size-second-center) / 2));
 
-    background-color: var(--color-hour);
+    background-color: var(--color-second);
 }
 
 .clock-disabled {
@@ -362,3 +365,5 @@ body {
 .hour-hand-correct {
     background-color: var(--color-hour-correct) !important;
 }
+
+/*#endregion*/
