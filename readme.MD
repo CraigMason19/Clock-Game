@@ -4,7 +4,7 @@
 - Utilizes the **Intl** namespace from the JavaScript Standard Library.
 - Generates random time zone clocks using data from the **Internet Assigned Numbers Authority (IANA)**.
 
-More information on **IANA** time zones can be found here.
+More information on **IANA** time zones can be found [here](https://www.iana.org).
 
 ## About
 
