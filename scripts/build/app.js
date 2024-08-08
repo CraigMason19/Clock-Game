@@ -1,6 +1,6 @@
 import { Timer } from './timer.js';
 import { Clock } from './clock.js';
-import { getUniquePlaces } from './time-zones.js';
+import { getCurrentTimeZone, getUniquePlaces } from './time-zones.js';
 function getRandomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -12,6 +12,12 @@ function calculateWinPercentage(gamesPlayed, gamesWon, decimalPlaces = 2) {
     return winPercentage.toFixed(decimalPlaces);
 }
 // Grab HTML References
+// UI
+const timerText = document.getElementById("timer-text");
+const winCounter = document.getElementById("win-counter");
+const winPercentage = document.getElementById("win-percentage");
+const winMeter = document.getElementById("win-meter");
+const localeInfo = document.getElementById("locale-info");
 // Text
 const questionText = document.getElementById("question");
 const answerText = document.getElementById("result-text");
@@ -20,11 +26,6 @@ const extraInfoTextTwo = document.getElementById("extra-info-text-two");
 // Buttons
 const playAgainButton = document.getElementById("play-again-button");
 const rootStyles = getComputedStyle(document.documentElement);
-// UI
-const timerText = document.getElementById("timer-text");
-const winCounter = document.getElementById("win-counter");
-const winPercentage = document.getElementById("win-percentage");
-const winMeter = document.getElementById("win-meter");
 let clocks = [];
 let timer = new Timer(true);
 // Game logic
@@ -32,6 +33,7 @@ let timer = new Timer(true);
 let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
+const CURRENT_LOCALE = getCurrentTimeZone();
 // Game loop functions
 function initializeGameClocks() {
     // Clean up previous clocks in the DOM
@@ -52,6 +54,7 @@ function initializeGameClocks() {
     answerIndex = getRandomNumberInRange(0, 2);
 }
 function initializeGameHTML() {
+    localeInfo.innerText = `${CURRENT_LOCALE.fullname} ${CURRENT_LOCALE.offset}`;
     questionText.innerHTML = `Which clock shows the time in <span class="question-name-highlight">${clocks[answerIndex].place.name}</span>?`;
     questionText.style.display = "block";
     answerText.style.display = 'none';

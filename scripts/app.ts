@@ -1,6 +1,6 @@
 import { Timer } from './timer.js';
 import { Clock } from './clock.js';
-import { getUniquePlaces, Place } from './time-zones.js';
+import { getCurrentTimeZone, getUniquePlaces, Place } from './time-zones.js';
 import { GameState, GameMode } from './game-state.js';
 
 
@@ -19,6 +19,13 @@ function calculateWinPercentage(gamesPlayed: number, gamesWon: number, decimalPl
 
 // Grab HTML References
 
+// UI
+const timerText = document.getElementById("timer-text") as HTMLParagraphElement;
+const winCounter = document.getElementById("win-counter") as HTMLParagraphElement;
+const winPercentage = document.getElementById("win-percentage") as HTMLParagraphElement;
+const winMeter = document.getElementById("win-meter") as HTMLMeterElement;
+const localeInfo = document.getElementById("locale-info") as HTMLMeterElement;
+
 // Text
 const questionText = document.getElementById("question") as HTMLParagraphElement;
 const answerText = document.getElementById("result-text") as HTMLParagraphElement;
@@ -30,12 +37,6 @@ const playAgainButton = document.getElementById("play-again-button") as HTMLButt
 
 const rootStyles = getComputedStyle(document.documentElement);
 
-// UI
-const timerText = document.getElementById("timer-text") as HTMLParagraphElement;
-const winCounter = document.getElementById("win-counter") as HTMLParagraphElement;
-const winPercentage = document.getElementById("win-percentage") as HTMLParagraphElement;
-const winMeter = document.getElementById("win-meter") as HTMLMeterElement;
-
 let clocks: Clock[] = [];
 let timer = new Timer(true);
 
@@ -45,6 +46,7 @@ let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
 
+const CURRENT_LOCALE: Place = getCurrentTimeZone();
 
 // Game loop functions
 
@@ -76,6 +78,8 @@ function initializeGameClocks(): void {
 }
 
 function initializeGameHTML(): void {
+    localeInfo.innerText = `${CURRENT_LOCALE.fullname} ${CURRENT_LOCALE.offset}`
+
     questionText.innerHTML = `Which clock shows the time in <span class="question-name-highlight">${clocks[answerIndex].place.name}</span>?`;
     questionText.style.display = "block";
 

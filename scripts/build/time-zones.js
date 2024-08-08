@@ -18,18 +18,18 @@ export const LONDON = PLACE_DATA.find(p => p.name === "London");
  * Retrieves the current timezone of the runtime's locale. (The environment where the code is being executed).
  *
  * @param {none} none - No parameters are passed to this function.
- * @returns {string} The current timezone as an IANA time zone identifier (e.g., "America/New_York", "Europe/London").
+ * @returns {Place} - A place object from the current IANA time zone identifier (e.g. "America/New_York", "Europe/London").
  */
-function getCurrentTimeZone() {
+export function getCurrentTimeZone() {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    return timeZone;
+    return createTimeZoneData(timeZone);
 }
 /**
  * Creates Place data from a given time zone string.
  *
  * Needed to add (Intl as any) & timeZone: any to work with typescript even though this runs in JS.
  *
- * @param {string} timeZoneString - The time zone string (e.g., "Europe/London").
+ * @param {string} timeZoneString The time zone string (e.g., "Europe/London").
  * @returns {Place} A Place object representing the time zone data.
  * @example
  */
