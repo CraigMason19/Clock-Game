@@ -1,0 +1,179 @@
+:root {
+    --color-light-mode: whitesmoke;
+    --color-light-mode-text: rgb(60,60,60);
+
+    --color-dark-mode: rgb(43,43,43);
+    --color-dark-mode-text: whitesmoke;
+
+    --color-light-mode-header: lightblue;
+    --color-dark-mode-header: darkgray;
+
+    --hover-color: lightblue;
+
+    --color-clock: rgb(236, 233, 226);
+    --color-clock-correct: #84ca9e; 
+
+    --color-rim: cornflowerblue;
+    --color-rim-disabled: rgb(120,120,120);
+    --color-rim-correct: green;
+
+    --color-second: rgb(80,80,80);
+    --color-second-disabled: rgb(120,120,120);
+    --color-second-correct: rgb(94, 224, 94);
+
+    --color-minute: #297e22;
+    --color-minute-disabled: rgb(100,100,100);
+    --color-minute-correct: rgb(16, 146, 16);
+
+    --color-hour: brown;
+    --color-hour-disabled: rgb(80,80,80);
+    --color-hour-correct: green;
+
+
+
+    --size-clock: 300px;
+
+    --size-second-center: 4%; 
+    --size-minute-center: 8%; 
+    --size-hour-center: 12%; 
+
+    --height-second: 48%;
+    --height-minute: 40%;
+    --height-hour: 30%;
+
+    --width-second: 4px;
+    --width-minute: 8px;
+    --width-hour: 12px; 
+
+    --border-radius-second: 5px;
+    --border-radius-minute: 5px;
+    --border-radius-hour: 5px;
+}
+
+/*#region Clock*/
+
+.clock {
+    position: relative;
+
+    height: var(--size-clock);
+    width: var(--size-clock);
+    border-radius: 50%;
+    border: solid 6px;
+    border-color: var(--color-rim);
+    background-color: var(--color-clock);
+}
+
+#clock-two {
+    border-radius: 0%;
+}
+
+#clock-three {
+    border-radius: 30%;
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    transform-origin: bottom;
+}
+
+.hour-hand {
+    height: var(--height-hour);
+    width: var(--width-hour);
+
+    left: calc(50% - var(--width-hour) / 2);
+
+    border-radius: var(--border-radius-hour);
+    background-color: var(--color-hour);
+}
+
+.minute-hand {
+    height: var(--height-minute);
+    width: var(--width-minute);
+
+    left: calc(50% - var(--width-minute) / 2);
+
+    border-radius: var(--border-radius-minute);
+    background-color: var(--color-minute);
+}
+
+.second-hand {
+    height: var(--height-second);
+    width: var(--width-second);
+
+    left: calc(50% - var(--width-second) / 2);
+
+    border-radius: var(--border-radius-second);
+    background-color: var(--color-second);
+}
+
+.center {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.hour-center {
+    width: var(--size-hour-center);
+    height: var(--size-hour-center);
+
+    left: calc(50% - (var(--size-hour-center) / 2));
+    bottom: calc(50% - (var(--size-hour-center) / 2));
+
+    background-color: var(--color-hour);
+}
+
+.minute-center {
+    width: var(--size-minute-center);
+    height: var(--size-minute-center);
+
+    left: calc(50% - (var(--size-minute-center) / 2));
+    bottom: calc(50% - (var(--size-minute-center) / 2));
+
+    background-color: var(--color-minute);
+}
+
+.second-center {
+    width: var(--size-second-center);
+    height: var(--size-second-center);
+
+    left: calc(50% - (var(--size-second-center) / 2));
+    bottom: calc(50% - (var(--size-second-center) / 2));
+
+    background-color: var(--color-second);
+}
+
+.clock-disabled {
+    border-color: var(--color-rim-disabled) !important; /* Take priority */
+    background-color: lightgray;
+}
+
+.second-hand-disabled {
+    background-color: var(--color-second-disabled) !important;
+}
+
+.minute-hand-disabled {
+    background-color: var(--color-minute-disabled) !important;
+}
+
+.hour-hand-disabled {
+    background-color: var(--color-hour-disabled) !important;
+}
+
+.clock-correct {
+    border-color: var(--color-rim-correct) !important; /* Take priority */
+    background-color: var(--color-clock-correct) !important;
+}
+
+.second-hand-correct {
+    background-color: var(--color-second-correct) !important;
+}
+
+.minute-hand-correct {
+    background-color: var(--color-minute-correct) !important;
+}
+
+.hour-hand-correct {
+    background-color: var(--color-hour-correct) !important;
+}
+
+/*#endregion*/
