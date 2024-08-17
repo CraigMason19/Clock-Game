@@ -12,6 +12,8 @@ function calculateWinPercentage(gamesPlayed, gamesWon, decimalPlaces = 2) {
     return winPercentage.toFixed(decimalPlaces);
 }
 // Grab HTML References
+const rootStyles = getComputedStyle(document.documentElement);
+const body = document.querySelector("#body");
 // UI
 const timerText = document.getElementById("timer-text");
 const winCounter = document.getElementById("win-counter");
@@ -25,7 +27,7 @@ const extraInfoTextOne = document.getElementById("extra-info-text-one");
 const extraInfoTextTwo = document.getElementById("extra-info-text-two");
 // Buttons
 const playAgainButton = document.getElementById("play-again-button");
-const rootStyles = getComputedStyle(document.documentElement);
+const colorModeButton = document.querySelector('#color-mode-btn');
 let clocks = [];
 let timer = new Timer(true);
 // Game logic
@@ -33,7 +35,15 @@ let timer = new Timer(true);
 let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
+let lightMode = true;
+const DARK_THEME_NAME = "dark";
 const CURRENT_LOCALE = getCurrentTimeZone();
+// Light / Dark mode switch
+colorModeButton.addEventListener('click', () => {
+    colorModeButton.classList.toggle(DARK_THEME_NAME);
+    body.classList.toggle(DARK_THEME_NAME);
+    lightMode = body.classList.contains(DARK_THEME_NAME);
+});
 // Game loop functions
 function initializeGameClocks() {
     // Clean up previous clocks in the DOM
@@ -69,7 +79,7 @@ function updateGameCounters() {
     winMeter.value = Number(result);
 }
 function handleMouseOver() {
-    this.style.backgroundColor = rootStyles.getPropertyValue('--hover-color');
+    this.style.backgroundColor = rootStyles.getPropertyValue('--color-clock-hover');
 }
 function handleMouseOut() {
     this.style.backgroundColor = '';

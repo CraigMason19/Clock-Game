@@ -1,14 +1,5 @@
 :root {
-    --color-light-mode: whitesmoke;
-    --color-light-mode-text: rgb(60,60,60);
-
-    --color-dark-mode: rgb(43,43,43);
-    --color-dark-mode-text: whitesmoke;
-
-    --color-light-mode-header: lightblue;
-    --color-dark-mode-header: darkgray;
-
-    --hover-color: lightblue;
+    --color-clock-hover: lightblue;
 
     --color-clock: rgb(236, 233, 226);
     --color-clock-correct: #84ca9e; 

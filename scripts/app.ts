@@ -19,6 +19,9 @@ function calculateWinPercentage(gamesPlayed: number, gamesWon: number, decimalPl
 
 // Grab HTML References
 
+const rootStyles = getComputedStyle(document.documentElement);
+const body = document.querySelector("#body") as HTMLBodyElement;
+
 // UI
 const timerText = document.getElementById("timer-text") as HTMLParagraphElement;
 const winCounter = document.getElementById("win-counter") as HTMLParagraphElement;
@@ -34,8 +37,9 @@ const extraInfoTextTwo = document.getElementById("extra-info-text-two") as HTMLP
 
 // Buttons
 const playAgainButton = document.getElementById("play-again-button") as HTMLButtonElement;
+const colorModeButton = document.querySelector('#color-mode-btn') as HTMLButtonElement;
 
-const rootStyles = getComputedStyle(document.documentElement);
+
 
 let clocks: Clock[] = [];
 let timer = new Timer(true);
@@ -46,7 +50,18 @@ let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
 
+let lightMode = true;
+const DARK_THEME_NAME = "dark";
+
 const CURRENT_LOCALE: Place = getCurrentTimeZone();
+
+// Light / Dark mode switch
+colorModeButton.addEventListener('click', () => {
+    colorModeButton.classList.toggle(DARK_THEME_NAME);
+    body.classList.toggle(DARK_THEME_NAME);
+
+    lightMode = body.classList.contains(DARK_THEME_NAME);
+});
 
 // Game loop functions
 
@@ -100,7 +115,7 @@ function updateGameCounters() {
 }
 
 function handleMouseOver(this: HTMLElement): void {
-    this.style.backgroundColor = rootStyles.getPropertyValue('--hover-color');
+    this.style.backgroundColor = rootStyles.getPropertyValue('--color-clock-hover');
 }
 
 function handleMouseOut(this: HTMLElement): void {
