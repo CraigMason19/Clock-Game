@@ -285,7 +285,9 @@ body {
 
 .modal-body details p, ul {
     font-weight: normal;
-    /* margin-top: 5px; */
+    list-style-type:disc;
+    margin-top: 5px;
+    margin-left: 50px;
 }
 
 .modal-close {
