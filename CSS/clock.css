@@ -6,7 +6,7 @@
     --color-clock: rgb(236, 233, 226);
     --color-clock-correct: #84ca9e; 
 
-    --color-rim: var(--color-header-text);
+    --color-rim: cornflowerblue;
     --color-rim-disabled: rgb(120,120,120);
     --color-rim-correct: green;
 
