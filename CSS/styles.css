@@ -50,7 +50,7 @@ header {
 
     flex-wrap: nowrap;
     
-    background-color: var(--color-light-mode-header);
+    background-color: var(--color-header);
     color: var(--color-light-mode-text);
     border-bottom: 1px solid light-dark(var(--color-light-mode-text), var(--color-dark-mode-text));
 
@@ -284,7 +284,7 @@ body {
 
     padding: 16px;
     height: 32px;
-    background-color: var(--color-light-mode-header);
+    background-color: var(--color-header);
     color: var(--color-light-mode-text);
     border-bottom: 1px solid light-dark(var(--color-light-mode-text), var(--color-dark-mode-text));
 }
