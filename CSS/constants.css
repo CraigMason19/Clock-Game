@@ -1,0 +1,18 @@
+:root {
+    --color-light-mode: whitesmoke;
+    --color-light-mode-text: rgb(60,60,60);
+
+    --color-dark-mode: rgb(43,43,43);
+    --color-dark-mode-text: lightgray;
+
+    /* --color-light-mode-header: #afe6eb; */
+
+    /* --color-light-mode-header: #68c4af; */
+
+    /* --color-light-mode-header:#ffffba; */
+
+    --color-light-mode-header: #d09cd9;
+
+    --color-header-text: rgb(60,60,60);
+    /* --color-light-mode-header:#bae1ff; */
+}

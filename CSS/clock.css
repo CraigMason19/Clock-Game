@@ -1,10 +1,12 @@
+@import './constants.css';
+
 :root {
-    --color-clock-hover: lightblue;
+    --color-clock-hover: var(--color-light-mode-header);
 
     --color-clock: rgb(236, 233, 226);
     --color-clock-correct: #84ca9e; 
 
-    --color-rim: cornflowerblue;
+    --color-rim: var(--color-header-text);
     --color-rim-disabled: rgb(120,120,120);
     --color-rim-correct: green;
 

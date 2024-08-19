@@ -1,15 +1,6 @@
+@import './constants.css';
+
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
-
-:root {
-    --color-light-mode: whitesmoke;
-    --color-light-mode-text: rgb(60,60,60);
-
-    --color-dark-mode: rgb(43,43,43);
-    --color-dark-mode-text: lightgray;
-
-    --color-light-mode-header: lightblue;
-    --color-dark-mode-header: blue;
-}
 
 /* Forces color-scheme */
 .light {
@@ -59,19 +50,51 @@ header {
 
     flex-wrap: nowrap;
     
-    background-color: light-dark(var(--color-light-mode-header), var(--color-dark-mode-header));
-    color: light-dark(var(--color-light-mode-text), var(--color-dark-mode-text));
+    background-color: var(--color-light-mode-header);
+    color: var(--color-light-mode-text);
     border-bottom: 1px solid light-dark(var(--color-light-mode-text), var(--color-dark-mode-text));
 
     width: 100%;
     height: 100%;
 }
 
+#modal-button {
+    background-color: transparent;
+    border:none;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%; 
+    cursor: pointer;
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+
+}
+
+.material-symbols-outlined {
+    color: var(--color-header-text);
+    font-size: 50px !important;
+}
+
+/* #modal-button:hover {
+    background-color: lightcyan; 
+    transition: background-color 0.3s;  
+} */
+
+#modal-button:hover .material-symbols-outlined {
+    /* color: #ecf9fa;  */
+    color: orangered; 
+
+    transition: color 0.3s;  
+}
+
 .title {
     font-weight: bolder;
     font-size: 1.5rem; 
     text-align: center;
-    color: light-dark(var(--color-light-mode-text), var(--color-dark-mode-text));
+    color: var(--color-light-mode-text);
 }
 
 .header-section {
@@ -261,8 +284,8 @@ body {
 
     padding: 16px;
     height: 32px;
-    background-color: light-dark(var(--color-light-mode-header), var(--color-dark-mode-header));
-    color: light-dark(var(--color-light-mode-text), var(--color-dark-mode-text));
+    background-color: var(--color-light-mode-header);
+    color: var(--color-light-mode-text);
     border-bottom: 1px solid light-dark(var(--color-light-mode-text), var(--color-dark-mode-text));
 }
 
@@ -302,6 +325,8 @@ body {
     color: orangered;
     text-decoration: none;
     cursor: pointer;
+
+    transition: color 0.3s;  
 }
 
 /*#endregion*/
