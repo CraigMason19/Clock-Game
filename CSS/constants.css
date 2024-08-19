@@ -9,10 +9,16 @@
 
     /* --color-light-mode-header: #68c4af; */
 
-    /* --color-light-mode-header:#ffffba; */
+    --color-light-mode-header:#ffffba;
 
-    --color-light-mode-header: #d09cd9;
+    /* --color-light-mode-header: #d09cd9; */
 
     --color-header-text: rgb(60,60,60);
+
+    --color-icon: rgb(60,60,60);
+
+
+
+    --color-icon-hover: rgb(225,225,225);
     /* --color-light-mode-header:#bae1ff; */
 }

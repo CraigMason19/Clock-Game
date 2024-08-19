@@ -1,6 +1,6 @@
 "use strict";
 var modal = document.getElementById("modal-container");
-var aboutButton = document.getElementById("modal-button");
+var aboutButton = document.getElementById("info-button");
 var modalClose = document.getElementsByClassName("modal-close")[0];
 aboutButton.onclick = function () {
     modal.style.display = "block";

@@ -1,5 +1,5 @@
 var modal = document.getElementById("modal-container") as HTMLElement;
-var aboutButton = document.getElementById("modal-button") as HTMLButtonElement;
+var aboutButton = document.getElementById("info-button") as HTMLButtonElement;
 var modalClose = document.getElementsByClassName("modal-close")[0] as HTMLSpanElement;
 
 aboutButton.onclick = function() {
