@@ -1,8 +1,8 @@
-var settingsModal = document.getElementById("settings-modal") as HTMLElement;
-var aboutModal = document.getElementById("about-modal") as HTMLElement;
-
 var settingsButton = document.getElementById("settings-button") as HTMLButtonElement;
 var aboutButton = document.getElementById("info-button") as HTMLButtonElement;
+
+var settingsModal = document.getElementById("settings-modal") as HTMLElement;
+var aboutModal = document.getElementById("about-modal") as HTMLElement;
 
 var settingsClose = settingsModal.getElementsByClassName("modal-close")[0] as HTMLSpanElement;
 var aboutClose = aboutModal.getElementsByClassName("modal-close")[0] as HTMLSpanElement;
@@ -35,3 +35,11 @@ window.onclick = function(event) {
 		aboutModal.style.display = "none";
 	}
 }
+
+// Allow the buttons to dynamically alter the header color in the css
+document.querySelectorAll('.orb-button').forEach(button => {
+	button.addEventListener('click', () => {
+		const theme = button.getAttribute('data-theme');
+		document.documentElement.style.setProperty('--color-header', `var(--color-header-${theme})`);
+	});
+});

@@ -12,127 +12,128 @@
 </head>
 
 <header>
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="modal-container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="title">Settings</p>
+                <span class="modal-close">&times;</span>
+            </div>
+
+            <div class="modal-body">
+
+                <h2>Theme</h2>
+
+                <div class="switcher">
+                    <input type="radio" id="light-theme" name="themes" checked />
+                    <label for="light-theme">
+                        <span>
+                            <ion-icon name="sunny"></ion-icon> Light
+                        </span>
+                    </label>
+                    <input type="radio" id="dark-theme" name="themes" />
+                    <label for="dark-theme">
+                        <span>
+                            <ion-icon name="moon"></ion-icon> Dark
+                        </span>
+                    </label>
+                    <span class="slider"></span>
+                </div>
+
+                <div class="modal-items">
+                    <button class="orb-button orb-1" data-theme="theme1"></button>
+                    <button class="orb-button orb-2" data-theme="theme2"></button>
+                    <button class="orb-button orb-3" data-theme="theme3"></button>
+                    <button class="orb-button orb-4" data-theme="theme4"></button>
+                    <button class="orb-button orb-5" data-theme="theme5"></button>
+                </div>
+
+                <div>
+                    <hr class="modal-break">
+                </div>
+
+                <h2>Game Mode</h2>
+
+                <div class="switcher">
+                    <input type="radio" id="loose-mode" name="game-modes" checked />
+                    <label for="loose-mode">
+                        <span>
+                            <ion-icon name="star-half"></ion-icon> Loose
+                        </span>
+                    </label>
+                    <input type="radio" id="strict-mode" name="game-modes" />
+                    <label for="strict-mode">
+                        <span>
+                            <ion-icon name="star"></ion-icon> Strict
+                        </span>
+                    </label>
+                    <span class="slider"></span>
+                </div>
+
+                <div>
+                    <hr class="modal-break">
+                </div>
+
+                <button id="info-button" class="modal-button">
+                    <ion-icon name="information-circle" class="modal-button-icon"></ion-icon>
+                    <p class="modal-button-label">Info</p>
+                </button>
+
+                <a href="https://www.iana.org/time-zones" target="_blank" class="modal-button">
+                    <ion-icon name="globe-sharp" class="modal-button-icon"></ion-icon>
+                    <p class="modal-button-label">IANA (Internet Assigned Numbers Authority)</p>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Info Modal -->
+    <div id="about-modal" class="modal-container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <p class="title">Info</p>
+                <span class="modal-close">&times;</span>
+            </div>
+
+            <div class="modal-body">
+                <details name="accordian" open>
+                    <summary>How to play</summary>
+                    <ul>
+                        <li>The goal is to identify the right time-zone / location from three analog clocks.</li>
+                        <li>There will be one correct clock and two random wrong clocks.</li>
+                        <li>If you play in <strong>Strict</strong> mode, you will only have one chance to guess correctly. In <strong>Loose</strong> mode, you have two chances to guess correctly. Choose whichever mode is the most fun for you!</li>
+                        <li>Once the correct answer has been given, a <strong>Google Image Search</strong> link will open with the keyword location to show the location.</li>
+                    </ul>
+                </details>
+                
+                <details name="accordian">
+                    <summary>Time-zones</summary>
+                    <p>Random timezone clocks are generated using data from the <strong>Internet Assigned Numbers Authority (IANA)</strong>.</p>
+                    <p>There are around 450 time-zones to chose from in the <strong>IANA</strong>.</p>
+                </details>
+
+                <details name="accordian">
+                    <summary>More Information</summary>
+                    <p>Written using Typescript, HTML & CSS.</p>
+                </details>
+            </div>
+        </div>
+    </div>
+    
     <div class="header-section settings">
         <button id="settings-button" class="setting-button">
             <ion-icon name="settings-sharp"></ion-icon>
         </button>
 
-
-        <!-- Settings Modal -->
-        <div id="settings-modal" class="modal-container">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p class="title">Settings</p>
-                    <span class="modal-close">&times;</span>
-                </div>
-
-                <div class="modal-body">
-
-                    <h2>Theme</h2>
-
-                    <div class="switcher">
-                        <input type="radio" id="light-theme" name="themes" checked />
-                        <label for="light-theme">
-                            <span>
-                                <ion-icon name="sunny"></ion-icon> Light
-                            </span>
-                        </label>
-                        <input type="radio" id="dark-theme" name="themes" />
-                        <label for="dark-theme">
-                            <span>
-                                <ion-icon name="moon"></ion-icon> Dark
-                            </span>
-                        </label>
-                        <span class="slider"></span>
-                    </div>
-
-                    <div class="modal-items">
-                        <ion-icon class="orb orb-1" name="ellipse"></ion-icon>
-                        <ion-icon class="orb orb-2" name="ellipse"></ion-icon>
-                        <ion-icon class="orb orb-3" name="ellipse"></ion-icon>
-                        <ion-icon class="orb orb-4" name="ellipse"></ion-icon>
-                        <ion-icon class="orb orb-5" name="ellipse"></ion-icon>
-                    </div>
-
-                    <div>
-                        <hr class="modal-break">
-                    </div>
-
-                    <h2>Game Mode</h2>
-
-                    <div class="switcher">
-                        <input type="radio" id="loose-mode" name="game-modes" checked />
-                        <label for="loose-mode">
-                            <span>
-                                <ion-icon name="star-half"></ion-icon> Loose
-                            </span>
-                        </label>
-                        <input type="radio" id="strict-mode" name="game-modes" />
-                        <label for="strict-mode">
-                            <span>
-                                <ion-icon name="star"></ion-icon> Strict
-                            </span>
-                        </label>
-                        <span class="slider"></span>
-                    </div>
-
-                    <div>
-                        <hr class="modal-break">
-                    </div>
-
-                    <button id="info-button" class="modal-button">
-                        <ion-icon name="information-circle" class="modal-button-icon"></ion-icon>
-                        <p class="modal-button-label">Info</p>
-                    </button>
-
-                    <a href="https://www.iana.org/time-zones" target="_blank" class="modal-button">
-                        <ion-icon name="globe-sharp" class="modal-button-icon"></ion-icon>
-                        <p class="modal-button-label">IANA (Internet Assigned Numbers Authority)</p>
-                    </a>
-
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Info Modal -->
-        <div id="about-modal" class="modal-container">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p class="title">Info</p>
-                    <span class="modal-close">&times;</span>
-                </div>
-
-                <div class="modal-body">
-                    <details name="accordian" open>
-                        <summary>How to play</summary>
-                        <ul>
-                            <li>The goal is to identify the right time-zone / location from three analog clocks.</li>
-                            <li>There will be one correct clock and two random wrong clocks.</li>
-                            <li>If you play in <strong>Strict</strong> mode, you will only have one chance to guess correctly. In <strong>Loose</strong> mode, you have two chances to guess correctly. Choose whichever mode is the most fun for you!</li>
-                            <li>Once the correct answer has been given, a <strong>Google Image Search</strong> link will open with the keyword location to show the location.</li>
-                        </ul>
-                    </details>
-                    
-                    <details name="accordian">
-                        <summary>Time-zones</summary>
-                        <p>Random timezone clocks are generated using data from the <strong>Internet Assigned Numbers Authority (IANA)</strong>.</p>
-                        <p>There are around 450 time-zones to chose from in the <strong>IANA</strong>.</p>
-                    </details>
-
-                    <details name="accordian">
-                        <summary>More Information</summary>
-                        <p>Written using Typescript, HTML & CSS.</p>
-                    </details>
-                </div>
-            </div>
-        </div>
-
         <p id="locale-info">Europe/London GMT+1</p>
     </div>
+
     <div>
         <p class="title">Analog Clock Game</p>
     </div>
+
     <div class="header-section stats">
         <p id="timer-text">0:05:43</p>
         <p id="win-counter">56 Wins</p>

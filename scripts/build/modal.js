@@ -1,8 +1,8 @@
 "use strict";
-var settingsModal = document.getElementById("settings-modal");
-var aboutModal = document.getElementById("about-modal");
 var settingsButton = document.getElementById("settings-button");
 var aboutButton = document.getElementById("info-button");
+var settingsModal = document.getElementById("settings-modal");
+var aboutModal = document.getElementById("about-modal");
 var settingsClose = settingsModal.getElementsByClassName("modal-close")[0];
 var aboutClose = aboutModal.getElementsByClassName("modal-close")[0];
 // Mouse click
@@ -28,3 +28,10 @@ window.onclick = function (event) {
         aboutModal.style.display = "none";
     }
 };
+// Allow the buttons to dynamically alter the header color in the css
+document.querySelectorAll('.orb-button').forEach(button => {
+    button.addEventListener('click', () => {
+        const theme = button.getAttribute('data-theme');
+        document.documentElement.style.setProperty('--color-header', `var(--color-header-${theme})`);
+    });
+});
