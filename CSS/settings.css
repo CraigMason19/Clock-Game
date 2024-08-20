@@ -1,0 +1,216 @@
+/* 
+		Project: Setting Menu
+    Created: Thursday, 10 February 2022
+    Author: Jamshid Elmi 
+    Tutorial: https://youtu.be/DzZbbXaLWeE
+*/
+
+@import './constants.css';
+
+:root {
+    --c-text-primary: #191919;
+    --c-text-secondary: #737374;
+    --c-border-primary: #ccc;
+    --c-bg-body: #ccc;
+    --c-bg-primary: #fff;
+    --c-bg-secondary: #d4d8dd;
+    --c-bg-button: #fff;
+  }
+  :root.dark-theme {
+    --c-text-primary: #eee;
+    --c-text-secondary: #d3d5db;
+    --c-border-primary: #454545;
+    --c-bg-body: #5e5e5e;
+    --c-bg-primary: #323339;
+    --c-bg-secondary: #222128;
+    --c-bg-button: #494a50;
+  }
+  :root.black-theme {
+    --c-text-primary: #edeeef;
+    --c-text-secondary: #d4d7e1;
+    --c-border-primary: #323232;
+    --c-bg-body: #000;
+    --c-bg-primary: #1b1d23;
+    --c-bg-secondary: #000001;
+    --c-bg-button: #343844;
+  }
+  
+  
+  
+  .orb {
+    font-size: 50px;
+    border-radius: 50%;
+  }
+  
+  .orb:hover {
+    background-color: lightblue;
+    /* font-size: 150%; */
+  }
+  
+  .orb-1 {
+    color: red;
+  }
+  
+  .orb-2 {
+    color: blue;
+  }
+  
+  .orb-3 {
+    color: green;
+  }
+  
+  body {
+    display: flex;
+    font-family: sans-serif;
+    line-height: 1.5;
+    justify-content: center;
+    background-color: var(--c-bg-body);
+    transform: background-color 1s ease;
+    color: var(--c-text-primary);
+  }
+  
+  /* #region switcher / slider */
+  
+  .switcher input {
+    display: none;
+  }
+  
+  .switcher {
+    position: relative;
+    background-color: darkblue;
+    border-radius: 10px;
+    display: flex;
+    padding: 0 3px;
+  }
+  
+  .switcher label {
+    position: relative;
+    z-index: 2;
+    width: calc(100% / 2);
+    color: var(--c-text-secondary);
+  }
+  
+  .switcher label span {
+    padding: 8px 0;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    opacity: 0.8;
+    align-items: center;
+  }
+  
+  .switcher label span:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  
+  .switcher .slider {
+    position: absolute;
+    z-index: 1;
+    width: calc((100% - 6px) / 2);
+    top: 3px;
+    transform: translatex(-110%);
+    bottom: 3px;
+    border-radius: 8px;
+    transition: .30s ease, transform 0.25s ease-out;
+    background-color: lightblue;
+  }
+  
+  .switcher input:nth-of-type(1):checked ~ .slider {
+    transform: translateX(0);
+  }
+  .switcher input:nth-of-type(2):checked ~ .slider {
+    transform: translateX(100%);
+  }
+  .switcher input:nth-of-type(3):checked ~ .slider {
+    transform: translateX(200%);
+  }
+  
+  /* #endregion */
+  
+  
+  
+  .menu {
+    width: 90%;
+    margin-top: 80px;
+    max-width: 320px;
+    background-color: var(--c-bg-primary);
+    transition: background-color .30s ease;
+    border-radius: 15px;
+  }
+  
+  .menu-header {
+    /* padding: 0rem 1rem 1rem 1rem; */
+    padding: 1rem;
+  }
+  
+  .menu-header-title {
+    font-size: 1.2rem;
+    color: var(--c-text-secondary);
+    font-weight: 700;
+    margin-top: 0;
+  }
+  
+  .menu-items {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem;
+  }
+  
+  .menu-break {
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--c-border-primary);
+  }
+  
+  .menu-body {
+    padding: 1rem;
+    transition: border-color .30s ease;
+    position: relative;
+  }
+  
+  .menu-body button {
+    text-decoration: none;
+    color: inherit;
+    padding-left: 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: .30s ease;
+    background-color: transparent;
+    border: 1px solid var(--c-border-primary);
+  
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  
+    width:100%;
+  }
+  
+  .menu-body button:hover {
+    background-color: var(--c-bg-secondary);
+  }
+  
+  /* .menu-body button ion-icon {
+    margin-left: 50px;
+    font-size: 40px;
+  } */
+  
+  .menu-body a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    padding: 0.6rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: .30s ease;
+  }
+   
+  .menu-body a:hover {
+    background-color: var(--c-bg-secondary);
+  }
+  
+  ion-icon {
+    margin-right: 5px;
+    font-size: 30px;
+    margin-top: 2px;
+  }
