@@ -6,7 +6,7 @@
     <title>Analog Clock Game - Where am I?</title>
 
     <link rel="stylesheet" href="CSS/styles.css">
-    <!-- <link rel="stylesheet" href="CSS/settings.css"> -->
+    <link rel="stylesheet" href="CSS/settings.css">
     <link rel="stylesheet" href="CSS/clock.css">
 
 
@@ -21,15 +21,9 @@
         <button id="settings-button" class="setting-button">
             <span class="material-symbols-outlined">settings</span>
         </button>
-        
-        <button id="info-button" class="setting-button">
-            <span class="material-symbols-outlined">info</span>
-        </button>
 
 
-
-
-        <!-- Info Modal -->
+        <!-- Settings Modal -->
         <div id="settings-modal" class="modal-container">
             <div class="modal-content">
                 <div class="modal-header">
@@ -38,21 +32,71 @@
                 </div>
 
                 <div class="modal-body">
-                    hello
 
-                    <div class="menu-items">
-                        <ion-icon class="orb orb-1" name="water"></ion-icon>
-                        <ion-icon class="orb orb-2" name="bowling-ball-sharp"></ion-icon>
-                        <ion-icon class="orb orb-3" name="ellipse"></ion-icon>
-                        <ion-icon class="orb orb-3" name="square"></ion-icon>
-                        <ion-icon class="orb orb-3" name="color-fill"></ion-icon>
+                    <h2>Theme</h2>
+
+                    <div class="switcher">
+                        <input type="radio" id="light-theme" name="themes" checked />
+                        <label for="light-theme">
+                            <span>
+                                <ion-icon name="sunny"></ion-icon> Light
+                            </span>
+                        </label>
+                        <input type="radio" id="dark-theme" name="themes" />
+                        <label for="dark-theme">
+                            <span>
+                                <ion-icon name="moon"></ion-icon> Dark
+                            </span>
+                        </label>
+                        <span class="slider"></span>
                     </div>
 
+                    <div class="modal-items">
+                        <ion-icon class="orb orb-1" name="ellipse"></ion-icon>
+                        <ion-icon class="orb orb-2" name="ellipse"></ion-icon>
+                        <ion-icon class="orb orb-3" name="ellipse"></ion-icon>
+                        <ion-icon class="orb orb-4" name="ellipse"></ion-icon>
+                        <ion-icon class="orb orb-5" name="ellipse"></ion-icon>
+                    </div>
+
+                    <div>
+                        <hr class="modal-break">
+                    </div>
+
+                    <h2>Game Mode</h2>
+
+                    <div class="switcher">
+                        <input type="radio" id="loose-mode" name="game-modes" checked />
+                        <label for="loose-mode">
+                            <span>
+                                <ion-icon name="star-half"></ion-icon> Loose
+                            </span>
+                        </label>
+                        <input type="radio" id="strict-mode" name="game-modes" />
+                        <label for="strict-mode">
+                            <span>
+                                <ion-icon name="star"></ion-icon> Strict
+                            </span>
+                        </label>
+                        <span class="slider"></span>
+                    </div>
+
+                    <div>
+                        <hr class="modal-break">
+                    </div>
+
+                    <button id="info-button" class="modal-button">
+                        <ion-icon name="information-circle" class="modal-button-icon"></ion-icon>
+                        <p class="modal-button-label">Info</p>
+                    </button>
+
+                    <button id="info-button" class="modal-button">
+                        <span class="material-symbols-outlined">info</span>
+                        <p class="modal-button-label">Give Feedback</p>
+                    </button>
                 </div>
             </div>
         </div>
-
-
 
 
         <!-- Info Modal -->

@@ -37,7 +37,7 @@ const extraInfoTextTwo = document.getElementById("extra-info-text-two") as HTMLP
 
 // Buttons
 const playAgainButton = document.getElementById("play-again-button") as HTMLButtonElement;
-const colorModeButton = document.querySelector('#color-mode-btn') as HTMLButtonElement;
+
 
 
 
@@ -56,12 +56,12 @@ const DARK_THEME_NAME = "dark";
 const CURRENT_LOCALE: Place = getCurrentTimeZone();
 
 // Light / Dark mode switch
-colorModeButton.addEventListener('click', () => {
-    colorModeButton.classList.toggle(DARK_THEME_NAME);
-    body.classList.toggle(DARK_THEME_NAME);
+// colorModeButton.addEventListener('click', () => {
+//     // colorModeButton.classList.toggle(DARK_THEME_NAME);
+//     // body.classList.toggle(DARK_THEME_NAME);
 
-    lightMode = body.classList.contains(DARK_THEME_NAME);
-});
+//     // lightMode = body.classList.contains(DARK_THEME_NAME);
+// });
 
 // Game loop functions
 

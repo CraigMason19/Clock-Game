@@ -27,7 +27,6 @@ const extraInfoTextOne = document.getElementById("extra-info-text-one");
 const extraInfoTextTwo = document.getElementById("extra-info-text-two");
 // Buttons
 const playAgainButton = document.getElementById("play-again-button");
-const colorModeButton = document.querySelector('#color-mode-btn');
 let clocks = [];
 let timer = new Timer(true);
 // Game logic
@@ -39,11 +38,11 @@ let lightMode = true;
 const DARK_THEME_NAME = "dark";
 const CURRENT_LOCALE = getCurrentTimeZone();
 // Light / Dark mode switch
-colorModeButton.addEventListener('click', () => {
-    colorModeButton.classList.toggle(DARK_THEME_NAME);
-    body.classList.toggle(DARK_THEME_NAME);
-    lightMode = body.classList.contains(DARK_THEME_NAME);
-});
+// colorModeButton.addEventListener('click', () => {
+//     // colorModeButton.classList.toggle(DARK_THEME_NAME);
+//     // body.classList.toggle(DARK_THEME_NAME);
+//     // lightMode = body.classList.contains(DARK_THEME_NAME);
+// });
 // Game loop functions
 function initializeGameClocks() {
     // Clean up previous clocks in the DOM

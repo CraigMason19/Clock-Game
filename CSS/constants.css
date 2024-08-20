@@ -1,8 +1,12 @@
 :root {
-    /* --color-header: #afe6eb; */
-    /* --color-header: #68c4af; */
-    --color-header:#ffffba;
-    /* --color-header: #d09cd9; */
+    --color-header-theme1: #afe6eb;
+    --color-header-theme2: #68c4af;
+    --color-header-theme3:#ffffba;
+    --color-header-theme4: #d09cd9;
+    --color-header-theme5: #d9aa9c;
+
+    --color-header: var(--color-header-theme2);
+
 
     --color-header-text: rgb(60,60,60);
 
