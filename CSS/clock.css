@@ -56,7 +56,7 @@
     
     background-color: var(--color-clock);
 
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    box-shadow: var(--box-shadow-clock);
 }
 
 #clock-two {
@@ -71,6 +71,7 @@
     position: absolute;
     bottom: 50%;
     transform-origin: bottom;
+    box-shadow: var(--box-shadow-clock-hands);
 }
 
 .hour-hand {
@@ -81,6 +82,7 @@
 
     border-radius: var(--border-radius-hour);
     background-color: var(--color-hour);
+    
 }
 
 .minute-hand {
@@ -136,12 +138,6 @@
     bottom: calc(50% - (var(--size-second-center) / 2));
 
     background-color: var(--color-second);
-}
-
-.hand {
-    mix-blend-mode: multiply;
-    box-shadow: 4px 5px 5px darkgray;
-    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; */
 }
 
 .clock-disabled {

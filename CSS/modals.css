@@ -177,11 +177,11 @@
 
 /* TODO - remove just for styling */
 #settings-modal .modal-content {
-    margin: 0%;
+    margin: 62px 00%;
 }
 
 #about-modal .modal-content {
-    margin: 0% auto;
+    margin: 10% auto;
 }
 
 #settings-modal .modal-content {
@@ -298,7 +298,7 @@
 }
 
   .modal-button-label {
-    font-size: 1.8rem;
+    font-size: 1.25rem;
     padding-left: 1rem;
   }
 
