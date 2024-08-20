@@ -20,20 +20,13 @@
 }
 
 
-.material-symbols-outlined {
+.setting-button {
     color: var(--color-icon);
-    font-size: 50px !important;
+    font-size: 50px;
 }
 
-/* #info-button:hover {
-    background-color: lightcyan; 
-    transition: background-color 0.3s;  
-} */
-
-.setting-button:hover .material-symbols-outlined {
-    /* color: #ecf9fa;  */
+.setting-button:hover ion-icon {
     color: var(--color-icon-hover);
-
     transition: color 0.3s;  
 }
 

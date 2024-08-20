@@ -6,20 +6,15 @@
     <title>Analog Clock Game - Where am I?</title>
 
     <link rel="stylesheet" href="CSS/styles.css">
-    <link rel="stylesheet" href="CSS/settings.css">
+    <link rel="stylesheet" href="CSS/modals.css">
     <link rel="stylesheet" href="CSS/clock.css">
 
-
-    <!-- info -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <!-- settings -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
 </head>
 
 <header>
     <div class="header-section settings">
         <button id="settings-button" class="setting-button">
-            <span class="material-symbols-outlined">settings</span>
+            <ion-icon name="settings-sharp"></ion-icon>
         </button>
 
 
@@ -90,10 +85,11 @@
                         <p class="modal-button-label">Info</p>
                     </button>
 
-                    <button id="info-button" class="modal-button">
-                        <span class="material-symbols-outlined">info</span>
-                        <p class="modal-button-label">Give Feedback</p>
-                    </button>
+                    <a href="https://www.iana.org/time-zones" target="_blank" class="modal-button">
+                        <ion-icon name="globe-sharp" class="modal-button-icon"></ion-icon>
+                        <p class="modal-button-label">IANA (Internet Assigned Numbers Authority)</p>
+                    </a>
+
                 </div>
             </div>
         </div>
@@ -205,7 +201,6 @@
 
     <script type="module" src="scripts/build/app.js"></script>
     <script type="module" src="scripts/build/modal.js"></script>
-
 </body>
 
 </html>
