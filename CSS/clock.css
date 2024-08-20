@@ -138,6 +138,12 @@
     background-color: var(--color-second);
 }
 
+.hand {
+    mix-blend-mode: multiply;
+    box-shadow: 4px 5px 5px darkgray;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px; */
+}
+
 .clock-disabled {
     border-color: var(--color-rim-disabled) !important; /* Take priority */
     background-color: lightgray;
