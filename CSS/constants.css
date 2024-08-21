@@ -6,24 +6,83 @@
     --color-header-theme5: #d9aa9c;
 
     --color-header: var(--color-header-theme2);
-
-
     --color-header-text: rgb(60,60,60);
 
     --color-icon: rgb(60,60,60);
+
+    /* TODO Or 
+    --color-selection
+    --color-selection
+    --color-selection
+     */
     --color-icon-hover: rgb(225,225,225);
 
+    /* TODO combine? */
     --color-light-mode: whitesmoke;
+    --color-dark-mode: rgb(43,43,43);
+    /* --color-background: light-dark(whitesmoke, rgb(43,43,43)); */
+
+
+
     --color-light-mode-text: rgb(60,60,60);
 
-    --color-dark-mode: rgb(43,43,43);
     --color-dark-mode-text: lightgray;
 
     --box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-
     --box-shadow-clock: 4px 5px 15px rgba(0, 0, 0, 0.35);
-
-
     --box-shadow-clock-hands: 4px 5px 5px rgba(0, 0, 0, 0.35);
 
+
+
+
+
+
+
+
+
+    /* #region Clock*/
+
+    --color-clock-hover: var(--color-header);
+
+    --color-clock: rgb(236, 233, 226);
+    --color-clock-correct: #84ca9e; 
+
+    --color-rim: light-dark(cornflowerblue, cornflowerblue);
+
+    --color-rim-disabled: rgb(120,120,120);
+    --color-rim-correct: green;
+
+    --color-second: rgb(80,80,80);
+    --color-second-disabled: rgb(120,120,120);
+    --color-second-correct: rgb(94, 224, 94);
+
+    --color-minute: #297e22;
+    --color-minute-disabled: rgb(100,100,100);
+    --color-minute-correct: rgb(16, 146, 16);
+
+    --color-hour: brown;
+    --color-hour-disabled: rgb(80,80,80);
+    --color-hour-correct: green;
+
+
+
+    --size-clock: 300px;
+
+    --size-second-center: 4%; 
+    --size-minute-center: 8%; 
+    --size-hour-center: 12%; 
+
+    --height-second: 48%;
+    --height-minute: 40%;
+    --height-hour: 30%;
+
+    --width-second: 4px;
+    --width-minute: 8px;
+    --width-hour: 12px; 
+
+    --border-radius-second: 5px;
+    --border-radius-minute: 5px;
+    --border-radius-hour: 5px;
+
+    /* #endregion */
 }

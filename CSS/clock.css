@@ -1,50 +1,5 @@
 @import './constants.css';
 
-:root {
-    --color-clock-hover: var(--color-header);
-
-    --color-clock: rgb(236, 233, 226);
-    --color-clock-correct: #84ca9e; 
-
-    --color-rim: cornflowerblue;
-    --color-rim-disabled: rgb(120,120,120);
-    --color-rim-correct: green;
-
-    --color-second: rgb(80,80,80);
-    --color-second-disabled: rgb(120,120,120);
-    --color-second-correct: rgb(94, 224, 94);
-
-    --color-minute: #297e22;
-    --color-minute-disabled: rgb(100,100,100);
-    --color-minute-correct: rgb(16, 146, 16);
-
-    --color-hour: brown;
-    --color-hour-disabled: rgb(80,80,80);
-    --color-hour-correct: green;
-
-
-
-    --size-clock: 300px;
-
-    --size-second-center: 4%; 
-    --size-minute-center: 8%; 
-    --size-hour-center: 12%; 
-
-    --height-second: 48%;
-    --height-minute: 40%;
-    --height-hour: 30%;
-
-    --width-second: 4px;
-    --width-minute: 8px;
-    --width-hour: 12px; 
-
-    --border-radius-second: 5px;
-    --border-radius-minute: 5px;
-    --border-radius-hour: 5px;
-}
-
-/*#region Clock*/
-
 .clock {
     position: relative;
 
@@ -66,6 +21,8 @@
 #clock-three {
     border-radius: 30%;
 }
+
+
 
 .hand {
     position: absolute;
@@ -105,6 +62,8 @@
     background-color: var(--color-second);
 }
 
+
+
 .center {
     position: absolute;
     border-radius: 50%;
@@ -140,6 +99,8 @@
     background-color: var(--color-second);
 }
 
+
+
 .clock-disabled {
     border-color: var(--color-rim-disabled) !important; /* Take priority */
     background-color: lightgray;
@@ -157,6 +118,8 @@
     background-color: var(--color-hour-disabled) !important;
 }
 
+
+
 .clock-correct {
     border-color: var(--color-rim-correct) !important; /* Take priority */
     background-color: var(--color-clock-correct) !important;
@@ -173,5 +136,3 @@
 .hour-hand-correct {
     background-color: var(--color-hour-correct) !important;
 }
-
-/*#endregion*/
