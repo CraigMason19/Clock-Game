@@ -19,6 +19,10 @@
     font-family: 'Oswald', sans-serif;
 }
 
+/* ion-icon {
+    pointer-events: none;
+} */
+
 
 .setting-button {
     color: var(--color-icon);
@@ -82,7 +86,7 @@ header {
 
 }
 
-.location-display {
+.locale-display {
     display: flex;
     align-items: center;
     justify-content: flex-start;
