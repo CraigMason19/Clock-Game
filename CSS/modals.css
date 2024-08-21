@@ -100,7 +100,7 @@
     font-size: 31px;
     height: 130px;
     width: 130px;
-    box-shadow: 2px 4px 4px lightgray;
+    /* box-shadow: 2px 4px 4px lightgray; */
     height: 65px;
     width: 65px;
 
@@ -108,7 +108,12 @@
 }
 
 .orb-button:hover {
-    border:4px solid light-dark(var(--color-dark-mode-text), var(--color-light-mode-text));
+    /* border:4px solid light-dark(var(--color-dark-mode-text), var(--color-light-mode-text)); */
+
+    /* border:0; */
+    outline: 4px solid light-dark(var(--color-dark-mode-text), var(--color-light-mode-text));
+    outline-offset: 4px;
+
 }
   
 .orb-1 {
