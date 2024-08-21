@@ -8,7 +8,13 @@
 @import './constants.css';
 
 
+#about-modal {
+  display: none;
+}
 
+#settings-modal {
+  display: block;
+}
 
   
  
@@ -110,10 +116,10 @@
 .orb-button:hover {
     /* border:4px solid light-dark(var(--color-dark-mode-text), var(--color-light-mode-text)); */
 
-    /* border:0; */
-    outline: 4px solid light-dark(var(--color-dark-mode-text), var(--color-light-mode-text));
+    outline: 5px solid var(--color-selection);
     outline-offset: 4px;
 
+    cursor: pointer;
 }
   
 .orb-1 {
@@ -145,7 +151,7 @@
 
 .modal-container {
     
-    display: block; /* TODO -> change to none, just debugging*/
+    display: None;
     position: fixed; 
     z-index: 1;
     left: 0; 
@@ -308,7 +314,7 @@
   }
 
 .modal-button:hover {
-    background-color: light-dark(var(--color-dark-mode-text), var(--color-light-mode-text));
+    background-color: var(--color-selection);
 }
 
 /*#endregion*/

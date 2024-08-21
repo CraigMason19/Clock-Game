@@ -19,6 +19,7 @@
     font-family: 'Oswald', sans-serif;
 }
 
+/* Remove ion-icons automatic popup */
 ion-icon {
     pointer-events: none;
 }
@@ -223,7 +224,3 @@ body {
     justify-content: center;
     align-items: center;  
 }
-
-
-
-
