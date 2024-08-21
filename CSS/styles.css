@@ -19,10 +19,9 @@
     font-family: 'Oswald', sans-serif;
 }
 
-/* ion-icon {
+ion-icon {
     pointer-events: none;
-} */
-
+}
 
 .setting-button {
     color: var(--color-icon);
