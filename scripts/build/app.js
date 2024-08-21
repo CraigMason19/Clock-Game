@@ -63,7 +63,7 @@ function initializeGameClocks() {
     answerIndex = getRandomNumberInRange(0, 2);
 }
 function initializeGameHTML() {
-    localeInfo.innerText = `${CURRENT_LOCALE.fullname} ${CURRENT_LOCALE.offset}`;
+    localeInfo.innerText = `${CURRENT_LOCALE.fullname}, ${CURRENT_LOCALE.timeZone}, ${CURRENT_LOCALE.offset}`;
     questionText.innerHTML = `Which clock shows the time in <span class="question-name-highlight">${clocks[answerIndex].place.name}</span>?`;
     questionText.style.display = "block";
     answerText.style.display = 'none';
