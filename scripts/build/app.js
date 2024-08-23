@@ -20,6 +20,8 @@ const winCounter = document.getElementById("win-counter");
 const winPercentage = document.getElementById("win-percentage");
 const winMeter = document.getElementById("win-meter");
 const localeInfo = document.getElementById("locale-info");
+const lightThemeRadioButton = document.getElementById("light-theme");
+const darkThemeRadioButton = document.getElementById("dark-theme");
 // Text
 const questionText = document.getElementById("question");
 const answerText = document.getElementById("result-text");
@@ -37,13 +39,13 @@ let gamesWon = 0;
 let lightMode = true;
 const DARK_THEME_NAME = "dark";
 const CURRENT_LOCALE = getCurrentTimeZone();
+lightThemeRadioButton.addEventListener('change', toggleTheme);
+darkThemeRadioButton.addEventListener('change', toggleTheme);
 // Light / Dark mode switch
-// colorModeButton.addEventListener('click', () => {
-//     // colorModeButton.classList.toggle(DARK_THEME_NAME);
-//     // body.classList.toggle(DARK_THEME_NAME);
-//     // lightMode = body.classList.contains(DARK_THEME_NAME);
-// });
-// Game loop functions
+function toggleTheme() {
+    body.classList.toggle(DARK_THEME_NAME);
+    // lightMode = body.classList.contains(DARK_THEME_NAME);
+}
 function initializeGameClocks() {
     // Clean up previous clocks in the DOM
     clocks.forEach(c => c.reset());

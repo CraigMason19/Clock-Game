@@ -28,6 +28,8 @@ const winCounter = document.getElementById("win-counter") as HTMLParagraphElemen
 const winPercentage = document.getElementById("win-percentage") as HTMLParagraphElement;
 const winMeter = document.getElementById("win-meter") as HTMLMeterElement;
 const localeInfo = document.getElementById("locale-info") as HTMLMeterElement;
+const lightThemeRadioButton = document.getElementById("light-theme") as HTMLInputElement;
+const darkThemeRadioButton = document.getElementById("dark-theme") as HTMLInputElement;
 
 // Text
 const questionText = document.getElementById("question") as HTMLParagraphElement;
@@ -55,15 +57,16 @@ const DARK_THEME_NAME = "dark";
 
 const CURRENT_LOCALE: Place = getCurrentTimeZone();
 
+lightThemeRadioButton.addEventListener('change', toggleTheme);
+darkThemeRadioButton.addEventListener('change', toggleTheme);
+
 // Light / Dark mode switch
-// colorModeButton.addEventListener('click', () => {
-//     // colorModeButton.classList.toggle(DARK_THEME_NAME);
-//     // body.classList.toggle(DARK_THEME_NAME);
+function toggleTheme() : void {
+	body.classList.toggle(DARK_THEME_NAME);
 
-//     // lightMode = body.classList.contains(DARK_THEME_NAME);
-// });
+    // lightMode = body.classList.contains(DARK_THEME_NAME);
+}
 
-// Game loop functions
 
 function initializeGameClocks(): void {
     // Clean up previous clocks in the DOM
@@ -185,12 +188,6 @@ function handleClick(this: HTMLElement): void {
 
     answerText.style.display = "block";
 }
-
-
-
-
-
-
 
 // First cycle
 initializeGameClocks();
