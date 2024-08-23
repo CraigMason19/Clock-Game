@@ -315,6 +315,9 @@
 
 .modal-button:hover {
     background-color: var(--color-selection);
+    /* color: white */
+    color: var(--color-light-mode-text)
+
 }
 
 /*#endregion*/

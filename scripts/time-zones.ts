@@ -4,7 +4,7 @@
 /**
  * Interface representing a place with its details.
  * 
- * e.g:
+ * e.g (NOTE: written in summer, so British Summer Time):
  * - name: "London"
  * - fullname: "Europe/London"
  * - offset: "GMT+1"
