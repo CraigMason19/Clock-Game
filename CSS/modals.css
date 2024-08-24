@@ -28,7 +28,6 @@
   
   .switcher {
     position: relative;
-    background-color: darkblue;
     border-radius: 10px;
     display: flex;
     padding: 0 3px;
@@ -36,21 +35,23 @@
 
     box-shadow: var(--box-shadow);
 
-  }
+    background-color: light-dark(var(--color-dark-mode), var(--color-light-mode));
+}
   
-  .switcher ion-icon {
+.switcher ion-icon {
     margin-right: 20px;
     font-size: 30px;
     margin-top: 3px;
 
-    color: red;
+    color:light-dark(var(--color-light-mode), var(--color-dark-mode));
 }
 
   .switcher label {
     position: relative;
     z-index: 2;
     width: calc(100% / 2);
-    color: green;
+    color:light-dark(var(--color-light-mode), var(--color-dark-mode));
+
   }
   
   .switcher label span {
@@ -76,7 +77,7 @@
     bottom: 3px;
     border-radius: 8px;
     transition: .30s ease, transform 0.25s ease-out;
-    background-color: lightblue;
+    background-color: var(--color-selection);
   }
   
   .switcher input:nth-of-type(1):checked ~ .slider {
