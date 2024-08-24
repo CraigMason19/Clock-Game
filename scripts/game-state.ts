@@ -19,4 +19,8 @@ export class GameState {
         this.numGuesses = 0;
         this.mode = this.mode;
     }
+
+    toggleGameMode(): void {
+        this.mode = (this.mode === GameMode.Loose) ? GameMode.Strict : GameMode.Loose;
+    }
 }
