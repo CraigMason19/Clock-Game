@@ -52,7 +52,6 @@ let answerIndex = 0;
 let gamesPlayed = 0;
 let gamesWon = 0;
 
-let lightMode = true;
 const DARK_THEME_NAME = "dark";
 
 const CURRENT_LOCALE: Place = getCurrentTimeZone();
@@ -63,10 +62,7 @@ darkThemeRadioButton.addEventListener('change', toggleTheme);
 // Light / Dark mode switch
 function toggleTheme() : void {
 	body.classList.toggle(DARK_THEME_NAME);
-
-    // lightMode = body.classList.contains(DARK_THEME_NAME);
 }
-
 
 function initializeGameClocks(): void {
     // Clean up previous clocks in the DOM
