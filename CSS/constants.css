@@ -12,14 +12,6 @@
 
 
     --color-icon: rgb(60,60,60);
-
-    /* TODO Or 
-    --color-selection
-    --color-selection
-    --color-selection
-     */
-     
-    /* --color-icon-hover: rgb(225,225,225); */
     --color-icon-hover: var(--color-selection);
 
 
