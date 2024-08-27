@@ -13,7 +13,7 @@
 }
 
 #settings-modal {
-  display: block;
+  display: none;
 }
 
   
@@ -151,8 +151,6 @@
 /*#region Modals*/
 
 .modal-container {
-    
-    display: None;
     position: fixed; 
     z-index: 1;
     left: 0; 
@@ -164,6 +162,10 @@
 
     animation-name: animate-modal;
     animation-duration: 0.5s; 
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
 
 
@@ -179,26 +181,22 @@
 }
 
 .modal-content {
-    margin: 10% auto;
-    width: 40%; 
+    height:fit-content;
+    margin: auto;
     border-radius: 10px;
     overflow: hidden; /* Ensures children don't overflow the parent's rounded corners */
 
     background-color: light-dark(var(--color-light-mode), var(--color-dark-mode));
 }
 
-/* TODO - remove just for styling */
-#settings-modal .modal-content {
-    margin: 62px 00%;
-}
-
-#about-modal .modal-content {
-    margin: 10% auto;
-}
-
 #settings-modal .modal-content {
     width: 30%;
 }
+
+#about-modal .modal-content {
+    width: 40%; 
+}
+
 
 .modal-header {
     display: flex;
