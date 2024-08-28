@@ -1,5 +1,5 @@
 import { clocks } from './app.js';
-export let markerMode = '';
+export let markerMode = 'marker-numeral';
 var settingsButton = document.getElementById("settings-button");
 var aboutButton = document.getElementById("info-button");
 var settingsModal = document.getElementById("settings-modal");

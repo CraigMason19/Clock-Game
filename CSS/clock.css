@@ -1,5 +1,10 @@
 @import './constants.css';
 
+/* DEBUG */
+#debug-str {
+    display: none;
+}
+
 .clock {
     position: relative;
 
