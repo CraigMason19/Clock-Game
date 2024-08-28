@@ -1,3 +1,7 @@
+import {clocks } from './app.js';
+
+export let markerMode = '';
+
 var settingsButton = document.getElementById("settings-button") as HTMLButtonElement;
 var aboutButton = document.getElementById("info-button") as HTMLButtonElement;
 
@@ -36,10 +40,19 @@ window.onclick = function(event) {
 	}
 }
 
-// Allow the buttons to dynamically alter the header color in the css
-document.querySelectorAll('.orb-button').forEach(button => {
-	button.addEventListener('click', () => {
-		const theme = button.getAttribute('data-theme');
-		document.documentElement.style.setProperty('--color-header', `var(--color-header-${theme})`);
+// Allow the settings buttons to dynamically alter the header color or markings
+document.querySelectorAll('.item-button').forEach(button => {
+	button.addEventListener('click', () => {		
+
+		if(button.hasAttribute('data-theme')) {
+			const theme = button.getAttribute('data-theme');
+			document.documentElement.style.setProperty('--color-header', `var(--color-header-${theme})`);
+		}
+
+		else if(button.hasAttribute('data-marker')) {
+			markerMode = button.getAttribute('data-marker') as string;
+
+			clocks.forEach(c => c.setMarkings(markerMode));
+		}
 	});
 });

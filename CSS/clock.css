@@ -39,22 +39,7 @@
     /* z-index: 1; */
 }
 
-/* .hour-marking p::before{
-    content: "f";
-}
-
-#clock-two .hour-marking p::before{
-    content: "XII";
-}
-
-#clock-three .hour-marking p::before{
-    content: "12";
-} */
-
-.hour-marking p {
-    /* font-weight: bold; */
-
-    
+.hour-marking p {    
     font-size: 1.2rem;
     color:var(--color-light-mode-text);
     margin:auto; 

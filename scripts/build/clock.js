@@ -57,15 +57,41 @@ export class Clock {
             this.hourCenter.classList.remove("hour-hand-correct");
         };
         this.createMarkings = () => {
-            const Numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
-            for (let i = 0; i < Numerals.length; i++) {
-                let numeralDiv = document.createElement('div');
-                numeralDiv.classList.add('hour-marking');
-                numeralDiv.style.transform = `rotate(calc((360deg / 12)  * ${i}))`;
-                let numeralText = document.createElement('p');
-                numeralText.innerHTML = Numerals[i];
-                numeralDiv.appendChild(numeralText);
-                this.element.appendChild(numeralDiv);
+            // Clear existing markings
+            const existingMarkings = this.element.querySelectorAll('.hour-marking');
+            existingMarkings.forEach(marking => marking.remove());
+            for (let i = 0; i < 12; i++) {
+                let markinglDiv = document.createElement('div');
+                markinglDiv.classList.add('hour-marking');
+                markinglDiv.style.transform = `rotate(calc((360deg / 12)  * ${i}))`;
+                // Empty at first
+                let p = document.createElement('p');
+                p.innerHTML = '';
+                markinglDiv.appendChild(p);
+                this.element.appendChild(markinglDiv);
+            }
+        };
+        this.setMarkings = (markingType) => {
+            const numerals = ['XII', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
+            const numbers = [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+            const markingDivs = this.element.getElementsByClassName('hour-marking');
+            for (let i = 0; i < markingDivs.length; i++) {
+                const p = markingDivs[i].querySelector('p');
+                switch (markingType) {
+                    case 'marker-dash':
+                        p.innerHTML = '|';
+                        break;
+                    case 'marker-numeral':
+                        p.innerHTML = numerals[i].toString();
+                        break;
+                    case 'marker-number':
+                        p.innerHTML = numbers[i].toString();
+                        break;
+                    case 'marker-none':
+                    default:
+                        p.innerHTML = '';
+                        break;
+                }
             }
         };
         this.name = name;

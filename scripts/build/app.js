@@ -1,6 +1,8 @@
 import { Timer } from './timer.js';
 import { Clock } from './clock.js';
 import { getCurrentTimeZone, getUniquePlaces } from './time-zones.js';
+import { markerMode } from './modal.js';
+// import { markerMode } from './modal.js';
 function getRandomNumberInRange(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -29,7 +31,7 @@ const extraInfoTextOne = document.getElementById("extra-info-text-one");
 const extraInfoTextTwo = document.getElementById("extra-info-text-two");
 // Buttons
 const playAgainButton = document.getElementById("play-again-button");
-let clocks = [];
+export let clocks = [];
 let timer = new Timer(true);
 // Game logic
 //let gameState = new GameState(GameMode.Loose);
@@ -55,6 +57,7 @@ function initializeGameClocks() {
     clocks = [clockOne, clockTwo, clockThree];
     clocks.forEach(clock => {
         clock.animate();
+        clock.setMarkings(markerMode);
         // Attach event listeners for clocks
         clock.element.addEventListener('mouseover', handleMouseOver);
         clock.element.addEventListener('mouseout', handleMouseOut);

@@ -2,7 +2,8 @@ import { Timer } from './timer.js';
 import { Clock } from './clock.js';
 import { getCurrentTimeZone, getUniquePlaces, Place } from './time-zones.js';
 import { GameState, GameMode } from './game-state.js';
-
+import { markerMode } from './modal.js';
+// import { markerMode } from './modal.js';
 
 function getRandomNumberInRange(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -43,7 +44,7 @@ const playAgainButton = document.getElementById("play-again-button") as HTMLButt
 
 
 
-let clocks: Clock[] = [];
+export let clocks: Clock[] = [];
 let timer = new Timer(true);
 
 // Game logic
@@ -79,6 +80,7 @@ function initializeGameClocks(): void {
 
     clocks.forEach(clock => {
         clock.animate();
+        clock.setMarkings(markerMode);
 
         // Attach event listeners for clocks
         clock.element.addEventListener('mouseover', handleMouseOver);
