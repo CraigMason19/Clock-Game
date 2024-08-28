@@ -185,6 +185,22 @@ function handleClick(this: HTMLElement): void {
     answerText.style.display = "block";
 }
 
+
+
+// Function to toggle the border class on and off
+function toggleBorders() {
+    document.body.classList.toggle('show-borders');
+}
+
+// Event listener for keydown event
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'd' || event.key === 'D') {
+        toggleBorders();
+    }
+});
+
+
+
 // First cycle
 initializeGameClocks();
 initializeGameHTML();

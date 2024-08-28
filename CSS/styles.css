@@ -19,6 +19,10 @@
     font-family: 'Oswald', sans-serif;
 }
 
+.show-borders * {
+    outline: 1px solid darkcyan;
+}
+
 /* Remove ion-icons automatic popup */
 ion-icon {
     pointer-events: none;
