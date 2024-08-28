@@ -22,8 +22,47 @@
     border-radius: 30%;
 }
 
+/* #region hour markings */
+.hour-marking {
+    height: 50%;
 
+    width: 15%;
+    left: calc(50% - (15% / 2));
 
+    position: absolute;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    transform-origin: bottom;
+    background-color: transparent;
+
+    text-align: center;
+    /* z-index: 1; */
+}
+
+/* .hour-marking p::before{
+    content: "f";
+}
+
+#clock-two .hour-marking p::before{
+    content: "XII";
+}
+
+#clock-three .hour-marking p::before{
+    content: "12";
+} */
+
+.hour-marking p {
+    /* font-weight: bold; */
+
+    
+    font-size: 1.2rem;
+    color:var(--color-light-mode-text);
+    margin:auto; 
+    text-shadow: 1px 2px 2px darkgray;
+}
+/* #endregion */
+
+/* #region hand */
 .hand {
     position: absolute;
     bottom: 50%;
@@ -39,7 +78,6 @@
 
     border-radius: var(--border-radius-hour);
     background-color: var(--color-hour);
-    
 }
 
 .minute-hand {
@@ -61,9 +99,9 @@
     border-radius: var(--border-radius-second);
     background-color: var(--color-second);
 }
+/* #endregion */
 
-
-
+/* #region centre */
 .center {
     position: absolute;
     border-radius: 50%;
@@ -98,9 +136,9 @@
 
     background-color: var(--color-second);
 }
+/* #endregion */
 
-
-
+/* #region disabled */
 .clock-disabled {
     border-color: var(--color-rim-disabled) !important; /* Take priority */
     background-color: lightgray;
@@ -117,11 +155,11 @@
 .hour-hand-disabled {
     background-color: var(--color-hour-disabled) !important;
 }
+/* #endregion */
 
-
-
+/* #region correct */
 .clock-correct {
-    border-color: var(--color-rim-correct) !important; /* Take priority */
+    border-color: var(--color-rim-correct) !important; 
     background-color: var(--color-clock-correct) !important;
 }
 
@@ -136,3 +174,4 @@
 .hour-hand-correct {
     background-color: var(--color-hour-correct) !important;
 }
+/* #endregion */

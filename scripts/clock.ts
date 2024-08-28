@@ -48,6 +48,8 @@ export class Clock {
 
         this.debugString.innerText = this.place.fullname + "\n" + this.place.timeZone;
 
+        this.createMarkings();
+
         this.enable();
     }
 
@@ -151,5 +153,21 @@ export class Clock {
 
         this.hourHand.classList.remove("hour-hand-correct");
         this.hourCenter.classList.remove("hour-hand-correct");
+    }
+
+    createMarkings = (): void => {
+        const Numerals = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+        
+        for(let i = 0; i < Numerals.length; i++) {
+            let numeralDiv = document.createElement('div');
+            numeralDiv.classList.add('hour-marking');
+            numeralDiv.style.transform = `rotate(calc((360deg / 12)  * ${i}))`;      
+            
+            let numeralText = document.createElement('p');
+            numeralText.innerHTML = Numerals[i];
+            numeralDiv.appendChild(numeralText);
+    
+            this.element.appendChild(numeralDiv);
+        }
     }
 }
