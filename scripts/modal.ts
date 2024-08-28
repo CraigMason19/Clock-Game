@@ -51,7 +51,6 @@ document.querySelectorAll('.item-button').forEach(button => {
 
 		else if(button.hasAttribute('data-marker')) {
 			markerMode = button.getAttribute('data-marker') as string;
-
 			clocks.forEach(c => c.setMarkings(markerMode));
 		}
 	});

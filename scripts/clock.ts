@@ -193,6 +193,11 @@ export class Clock {
                 case 'marker-number':
                     p.innerHTML = numbers[i].toString();
                     break;
+                case 'marker-random':
+                    let options = ['marker-none', 'marker-number', 'marker-numeral', 'marker-dash'];
+                    let randomIndex = Math.floor(Math.random() * options.length);
+                    this.setMarkings(options[randomIndex]);
+                    break;
                 case 'marker-none':
                 default:
                     p.innerHTML = '';
