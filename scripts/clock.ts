@@ -165,7 +165,6 @@ export class Clock {
             markinglDiv.classList.add('hour-marking');
             markinglDiv.style.transform = `rotate(calc((360deg / 12)  * ${i}))`;      
             
-            // Empty at first
             let p = document.createElement('p');
             p.innerHTML = '';
             markinglDiv.appendChild(p);
@@ -187,17 +186,21 @@ export class Clock {
                 case 'marker-dash':
                     p.innerHTML = '|';
                     break;
+
                 case 'marker-numeral':
                     p.innerHTML = numerals[i].toString();
                     break;
+
                 case 'marker-number':
                     p.innerHTML = numbers[i].toString();
                     break;
+
                 case 'marker-random':
                     let options = ['marker-none', 'marker-number', 'marker-numeral', 'marker-dash'];
                     let randomIndex = Math.floor(Math.random() * options.length);
                     this.setMarkings(options[randomIndex]);
                     break;
+
                 case 'marker-none':
                 default:
                     p.innerHTML = '';
