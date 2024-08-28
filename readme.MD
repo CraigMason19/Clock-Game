@@ -1,4 +1,4 @@
-# Clock Guessing Game (Work-in-progress)
+# Analog Clock Guessing Game (Work-in-progress)
 
 - Made using TypeScript / JavaScript, CSS & HTML
 - Utilizes the **Intl** namespace from the JavaScript Standard Library.
