@@ -1,23 +1,4 @@
-/* 
-		Project: Setting Menu
-    Created: Thursday, 10 February 2022
-    Author: Jamshid Elmi 
-    Tutorial: https://youtu.be/DzZbbXaLWeE
-*/
-
 @import './constants.css';
-
-
-#about-modal {
-  display: none;
-}
-
-#settings-modal {
-  display: none;
-}
-
-  
- 
 
 
   /* #region switcher / slider */
@@ -158,19 +139,9 @@
 	content: "12";
 }
 
-/* .marker-5 { */
-  /* TODO */
-	/* visibility: hidden; */
-
-/* } */
-
 .marker-5::before {
-  content:"??";
+  content:"Rnd";
 }
-
-
-
-
 
 /*#region Modals*/
 
@@ -190,9 +161,12 @@
     display: flex;
     justify-content: center;
     align-content: center;
+
+    /* All menus must be on top */
+    z-index: 10;
+
+    display: none;
 }
-
-
 
 @keyframes animate-modal {
     from {
@@ -220,7 +194,6 @@
 #about-modal .modal-content {
     width: 40%; 
 }
-
 
 .modal-header {
     display: flex;

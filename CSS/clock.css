@@ -41,7 +41,6 @@
     background-color: transparent;
 
     text-align: center;
-    /* z-index: 1; */
 }
 
 .hour-marking p {    
@@ -49,6 +48,9 @@
     color:var(--color-light-mode-text);
     margin:auto; 
     text-shadow: 1px 2px 2px darkgray;
+
+    /* show below the hands */
+    z-index: 0;
 }
 /* #endregion */
 
@@ -68,6 +70,8 @@
 
     border-radius: var(--border-radius-hour);
     background-color: var(--color-hour);
+
+    z-index: 1;
 }
 
 .minute-hand {
@@ -78,6 +82,8 @@
 
     border-radius: var(--border-radius-minute);
     background-color: var(--color-minute);
+
+    z-index: 2;
 }
 
 .second-hand {
@@ -88,6 +94,8 @@
 
     border-radius: var(--border-radius-second);
     background-color: var(--color-second);
+
+    z-index: 3;
 }
 /* #endregion */
 
@@ -95,6 +103,7 @@
 .center {
     position: absolute;
     border-radius: 50%;
+    z-index: 2;
 }
 
 .hour-center {
@@ -105,6 +114,8 @@
     bottom: calc(50% - (var(--size-hour-center) / 2));
 
     background-color: var(--color-hour);
+
+    z-index: 1;
 }
 
 .minute-center {
@@ -115,6 +126,8 @@
     bottom: calc(50% - (var(--size-minute-center) / 2));
 
     background-color: var(--color-minute);
+
+    z-index: 2;
 }
 
 .second-center {
@@ -125,6 +138,8 @@
     bottom: calc(50% - (var(--size-second-center) / 2));
 
     background-color: var(--color-second);
+
+    z-index: 4;
 }
 /* #endregion */
 
