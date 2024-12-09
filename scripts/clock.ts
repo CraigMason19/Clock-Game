@@ -114,7 +114,7 @@ export class Clock {
 
     disable = (): void => {
         this.enabled = false;
-
+        
         this.element.classList.add("clock-disabled");
 
         this.secondHand.classList.add("second-hand-disabled");

@@ -57,13 +57,13 @@ a {
 
 
 
-/*#region Header*/
+/* #region Header */
 
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    align-items: center;
+    align-items:center;
 
     flex-wrap: nowrap;
     
@@ -94,7 +94,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 10px;
+    /* gap: 10px; */
 }
 
 
@@ -111,7 +111,7 @@ header {
 
     display: flex;
     flex-direction: row;
-    gap: 50px;
+    gap: 5%;
 
     flex: 1;
     align-items: center;
@@ -141,7 +141,11 @@ header {
     height: 30px;
 }
 
-/*#endregion*/
+/* #endregion */
+
+
+
+
 
 #play-again-button {
     font-size: 1.75rem; 
