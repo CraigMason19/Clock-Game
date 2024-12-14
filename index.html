@@ -13,7 +13,34 @@
     <link rel="stylesheet" href="CSS/media-queries.css">
 </head>
 
-<header>
+<header>    
+    <div class="header-section settings">
+        <button id="settings-button" class="setting-button">
+            <ion-icon name="settings-sharp"></ion-icon>
+        </button>
+
+        <div class="locale-display">
+            <button id="locale-button" class="setting-button">
+                <ion-icon name="location-sharp"></ion-icon>
+            </button>
+
+            <p id="locale-info">Europe/London GMT+1</p>
+        </div>
+    </div>
+
+    <div>
+        <p class="title">Analog Clock Game</p>
+    </div>
+
+    <div class="header-section stats">
+        <p id="timer-text">0:05:43</p>
+        <p id="win-counter">56 Wins</p>
+        <p id="win-percentage">53.83%</p>
+        <meter id="win-meter" min="0" max="100" low="25" high="60" optimum="70" value="65"></meter>
+    </div>
+</header>
+
+<body id="body" class="light">
     <!-- Settings Modal -->
     <div id="settings-modal" class="modal-container">
         <div class="modal-content">
@@ -137,34 +164,8 @@
             </div>
         </div>
     </div>
+
     
-    <div class="header-section settings">
-        <button id="settings-button" class="setting-button">
-            <ion-icon name="settings-sharp"></ion-icon>
-        </button>
-
-        <div class="locale-display">
-            <button id="locale-button" class="setting-button">
-                <ion-icon name="location-sharp"></ion-icon>
-            </button>
-
-            <p id="locale-info">Europe/London GMT+1</p>
-        </div>
-    </div>
-
-    <div>
-        <p class="title">Analog Clock Game</p>
-    </div>
-
-    <div class="header-section stats">
-        <p id="timer-text">0:05:43</p>
-        <p id="win-counter">56 Wins</p>
-        <p id="win-percentage">53.83%</p>
-        <meter id="win-meter" min="0" max="100" low="25" high="60" optimum="70" value="65"></meter>
-    </div>
-</header>
-
-<body id="body" class="light">
     <div class="clocks">
         <div id="clock-one" class="clock">
             <div id="hour-hand" class="hand hour-hand"></div>
