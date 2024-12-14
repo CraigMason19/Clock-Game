@@ -249,9 +249,13 @@ body {
 }
 
 
+/* #region Feature Queries */
 
+/* Safari specific */
 @supports (-webkit-touch-callout: none) {
     body {
         height: -webkit-fill-available;
     }
 }
+
+/* #endregion */
