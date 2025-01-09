@@ -64,7 +64,6 @@ export class Clock {
                 let markinglDiv = document.createElement('div');
                 markinglDiv.classList.add('hour-marking');
                 markinglDiv.style.transform = `rotate(calc((360deg / 12)  * ${i}))`;
-                // Empty at first
                 let p = document.createElement('p');
                 p.innerHTML = '';
                 markinglDiv.appendChild(p);

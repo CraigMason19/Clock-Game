@@ -160,3 +160,4 @@ playAgainButton.addEventListener("click", () => {
     initializeGameHTML();
     updateGameCounters();
 });
+alert("Foo");
