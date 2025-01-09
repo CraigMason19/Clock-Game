@@ -160,4 +160,4 @@ playAgainButton.addEventListener("click", () => {
     initializeGameHTML();
     updateGameCounters();
 });
-alert("Foo");
+alert(`${window.innerWidth} x ${window.innerHeight}`);
