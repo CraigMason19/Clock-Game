@@ -1,8 +1,15 @@
 @import './constants.css';
 
-/* IPad */
-@media (max-width: 1024px) {
-    .title {
+/* Tablets (iPads and similar devices) */
+@media (min-width: 768px) {
+    body {
+        color: blue;
+    }
+}
+
+/* Larger tablets and small laptops */
+@media (min-width: 1024px) {
+    body {
         color: red;
-    } 
-} 
+    }
+}
