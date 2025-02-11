@@ -5,6 +5,11 @@
     body {
         color: blue;
     }
+    
+    .clock {
+        height: var(150px);
+        width: var(150px);
+    }
 }
 
 /* Larger tablets and small laptops */
